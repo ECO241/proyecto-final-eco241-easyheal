@@ -15,28 +15,13 @@
             <option value="usuario2">Doctor</option>
             <option value="usuario3">Farmacia</option>
         </select>
-        
-        <input type="password" name="contraseña" placeholder="Contraseña" required><br>
+
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre de usuario" required>
+        <input type="password" name="contraseña" placeholder="Contraseña" required>
         <button type="submit">Iniciar Sesión</button>
         <p>¿No tienes cuenta? <a href="/reg">Regístrate</a></p>
     </form>
-
-
-    <button type="submit" id="botonpaciente">Paciente</button>
-    <button type="submit" id="botondoc">Doctor</button>
-    <button type="submit" id="botonfar">Farmacia</button>
     <script src="../../index.js"></script>
 
-     <script>
-      document.getElementById('botonpaciente').addEventListener('click', function() {
-        window.location.href = '/recipac';})
-
-        document.getElementById('botondoc').addEventListener('click', function() {
-        window.location.href = '/mensajdoc';})
-
-        document.getElementById('botonfar').addEventListener('click', function() {
-        window.location.href = '/recifar';})
-
-   </script>
 </body>
 </html>
