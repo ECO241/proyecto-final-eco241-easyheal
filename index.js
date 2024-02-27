@@ -17,7 +17,7 @@ app.get("/logo", (req, res) => res.sendFile(__dirname + "/app/pages/logo.html"))
 app.get("/about", (req, res) => res.sendFile(__dirname + "/app/pages/about.html"));
 app.get("/reg", (req, res) => res.sendFile(__dirname + "/app/pages/register.html"));
 app.get("/log", (req, res) => res.sendFile(__dirname + "/app/pages/login.html"));
-app.get("/mensajdoc", (req, res) => res.sendFile(__dirname + "/app/pages/mensajesdoc.html"));
+app.get("/recidoc", (req, res) => res.sendFile(__dirname + "/app/pages/recibidordoc.html"));
 app.get("/recipac", (req, res) => res.sendFile(__dirname + "/app/pages/recibidorpac.html"));
 app.get("/recifar", (req, res) => res.sendFile(__dirname + "/app/pages/recibidorfar.html"));
 app.get("/historial", (req, res) => res.sendFile(__dirname + "/app/pages/historial.html"));
@@ -28,7 +28,7 @@ app.post('/logo', (req, res) => res.send('Solicitud POST recibida'));
 app.post('/aboutus', (req, res) => res.send('Solicitud POST recibida'));
 app.post('/recibipac', (req, res) => res.send('Solicitud POST recibida'));
 app.post('/recibifar', (req, res) => res.send('Solicitud POST recibida'));
-app.post('/mensajedoc', (req, res) => res.send('Solicitud POST recibida'));
+app.post('/recibidoc', (req, res) => res.send('Solicitud POST recibida'));
 app.post('/historialf', (req, res) => res.send('Solicitud POST recibida'));
 app.post('/estadof', (req, res) => res.send('Solicitud POST recibida'));
 
@@ -53,6 +53,11 @@ app.post('/registro', (req, res) => {
     // Verificar que las contraseñas coincidan
     if (contraseña !== repetir_contraseña) {
         return res.status(400).send('<script>alert("Las contraseñas no coinciden."); window.location="/reg";</script>');
+    }
+
+      // Verificar que la contraseña tenga al menos 8 caracteres
+      if (contraseña.length < 8) {
+        return res.status(400).send('<script>alert("La contraseña debe tener al menos 8 caracteres."); window.location="/reg";</script>');
     }
 
     // Verificar si el usuario ya está registrado por nombre en algún tipo de usuario
@@ -107,13 +112,13 @@ app.post('/login', (req, res) => {
     // Redirigir al usuario a la página correspondiente según su tipo de usuario
     switch (usuario.rol) {
         case 'paciente':
-            res.redirect('/recipac');
+            res.redirect(`/recipac?nombre=${nombre}`);
             break;
         case 'doctor':
-            res.redirect('/mensajdoc');
+            res.redirect(`/recidoc?nombre=${nombre}`);
             break;
         case 'farmacia':
-            res.redirect('/recifar');
+            res.redirect(`/recifar?nombre=${nombre}`);
             break;
         default:
             res.status(500).send('Error interno del servidor');

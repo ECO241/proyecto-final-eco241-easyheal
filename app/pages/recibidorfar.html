@@ -6,12 +6,33 @@
     <title>Recibidor Farmacia</title>
 </head>
 <body>
-    <h1>Esta es la farmacia</h1>
- 
+    
+    <div id="welcomeMessage"></div>
     
     <script src="../../index.js"></script>
    <script>
-      
+       
+        // Función para obtener el nombre del usuario de la URL
+        function getUserName() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('nombre');
+        }
+    
+        // Función para mostrar el mensaje de bienvenida con el nombre del usuario
+        function displayWelcomeMessage() {
+            const userName = getUserName();
+            const welcomeMessageElement = document.getElementById('welcomeMessage');
+            if (userName) {
+                welcomeMessageElement.textContent = `Bienvenido,  ${userName}`;
+            } else {
+                welcomeMessageElement.textContent = 'Bienvenido';
+            }
+        }
+    
+        // Llamar a la función para mostrar el mensaje de bienvenida al cargar la página
+        displayWelcomeMessage();
+    
+   </script>
    </script>
 </body>
 </html>
