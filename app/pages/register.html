@@ -8,7 +8,7 @@
 <body>
 
     <img src="/img/Logo design_Mesa de trabajo 1 copia 6.png" alt="Logo easyheal">
-    <form action="/registro" method="POST">
+    <form action="/registrar-usuario" method="POST">
         <h1>Registro</h1>
         <label for="rol">Selecciona tu tipo de usuario:</label>
         <select id="rol" name="rol" required>
@@ -27,7 +27,7 @@
         <label for="repetir_contraseña">Repetir contraseña</label>
         <input type="password" id="repetir_contraseña" name="repetir_contraseña" placeholder="Repetir contraseña" required>
         <button type="submit" id="registro">Registrarse</button>
-        <p>¿Ya tienes una cuenta? <a href="/log">Inicia sesión</a></p>
+        <p>¿Ya tienes una cuenta? <a href="/iniciar-sesion">Inicia sesión</a></p>
     </form>
     
         
@@ -36,7 +36,7 @@
     <script src="../../index.js"></script>
     <script>
       document.getElementById('back').addEventListener('click', function() {
-    window.location.href = '/about';})
+    window.location.href = '/acerca';})
    
     </script>
        
