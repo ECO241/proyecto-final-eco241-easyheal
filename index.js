@@ -34,16 +34,20 @@ let pacientes = [];
 let doctores = [];
 let farmacias = [];
 
+// Variable para generar IDs únicos
+let idCounter = 1;
+
 
 //--REGISTER--//
 
 // Manejo de solicitud POST para el registro de usuarios
+// Manejo de solicitud POST para el registro de usuarios
 app.post('/registro', (req, res) => {
     // Extraer los datos del cuerpo de la solicitud
-    const { rol, nombre, contraseña, repetir_contraseña } = req.body;
+    const { rol, nombre, correo, contraseña, repetir_contraseña } = req.body;
     
     // Verificar que los campos estén llenos
-    if (!nombre || !contraseña || !repetir_contraseña || !rol) {
+    if (!nombre || !correo || !contraseña || !repetir_contraseña || !rol) {
         return res.status(400).send('Por favor, complete todos los campos.');
     }
 
@@ -52,38 +56,40 @@ app.post('/registro', (req, res) => {
         return res.status(400).send('<script>alert("Las contraseñas no coinciden."); window.location="/reg";</script>');
     }
 
-      // Verificar que la contraseña tenga al menos 8 caracteres
-      if (contraseña.length < 8) {
-        return res.status(400).send('<script>alert("La contraseña debe tener al menos 8 caracteres."); window.location="/reg";</script>');
-    }
-
-    // Verificar si el usuario ya está registrado por nombre en algún tipo de usuario
-    const usuarioExistente = pacientes.concat(doctores, farmacias).some(user => user.nombre === nombre);
-    if (usuarioExistente) {
-        return res.send('<script>alert("El nombre de usuario ya está registrado."); window.location="/reg";</script>');
-    }
-
-    // Crear un nuevo objeto de usuario
-    const nuevoUsuario = { nombre, contraseña, rol };
-
-    // Agregar el nuevo usuario al arreglo correspondiente según su tipo de usuario
+          // Verificar que la contraseña tenga al menos 8 caracteres
+          if (contraseña.length < 3) {
+            return res.status(400).send('<script>alert("La contraseña debe tener al menos 8 caracteres."); window.location="/reg";</script>');
+        }
+    // Verificar si el correo electrónico ya está registrado en el arreglo correspondiente según su rol
+    let usuariosRegistrados;
     switch (rol) {
         case 'paciente':
-            pacientes.push(nuevoUsuario);
+            usuariosRegistrados = pacientes;
             break;
         case 'doctor':
-            doctores.push(nuevoUsuario);
+            usuariosRegistrados = doctores;
             break;
         case 'farmacia':
-            farmacias.push(nuevoUsuario);
+            usuariosRegistrados = farmacias;
             break;
         default:
             return res.status(400).send('Tipo de usuario no válido');
     }
 
+    if (usuariosRegistrados.some(user => user.correo === correo)) {
+        return res.send('<script>alert("El correo electrónico ya está registrado."); window.location="/reg";</script>');
+    }
+
+  // Crear un nuevo objeto de usuario con un ID único
+  const nuevoUsuario = { id: idCounter++, nombre, contraseña, rol , correo};
+
+    // Agregar el nuevo usuario al arreglo correspondiente según su rol
+    usuariosRegistrados.push(nuevoUsuario);
+
     // Redirigir al usuario a la página de inicio de sesión después del registro exitoso
     res.redirect('/log');
 });
+
 
 // Ruta para obtener los registros de usuarios (VER EN LA API)
 app.get('/registros', (req, res) => {
@@ -98,10 +104,15 @@ app.get('/registros', (req, res) => {
 //--LOGIN--//
 
 app.post('/login', (req, res) => {
-    const { nombre, contraseña, rol } = req.body;
+    const { correo, contraseña } = req.body;
 
-    // Verificar si las credenciales coinciden con algún usuario registrado
-    const usuario = pacientes.concat(doctores, farmacias).find(user => user.nombre === nombre && user.contraseña === contraseña);
+    // Verificar si las credenciales coinciden con algún usuario registrado en alguno de los arreglos según su rol
+    let usuario;
+    [pacientes, doctores, farmacias].some(usuariosRegistrados => {
+        usuario = usuariosRegistrados.find(user => user.correo === correo && user.contraseña === contraseña);
+        return usuario;
+    });
+
     if (!usuario) {
         return res.status(401).send('<script>alert("Credenciales incorrectas. Inténtelo de nuevo."); window.location="/log";</script>');
     }
@@ -109,22 +120,18 @@ app.post('/login', (req, res) => {
     // Redirigir al usuario a la página correspondiente según su tipo de usuario
     switch (usuario.rol) {
         case 'paciente':
-            res.redirect(`/recipac?nombre=${nombre}`);
+            res.redirect(`/recipac?nombre=${usuario.nombre}`);
             break;
         case 'doctor':
-            res.redirect(`/recidoc?nombre=${nombre}`);
+            res.redirect(`/recidoc?nombre=${usuario.nombre}`);
             break;
         case 'farmacia':
-            res.redirect(`/recifar?nombre=${nombre}`);
+            res.redirect(`/recifar?nombre=${usuario.nombre}`);
             break;
         default:
             res.status(500).send('Error interno del servidor');
     }
 });
-
-
-
-
 // Configuración del servidor para escuchar en el puerto especificado
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);

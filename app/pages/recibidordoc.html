@@ -45,7 +45,7 @@ async function fetchAndDisplayPacientes() {
         const pacientes = registros.pacientes;
         const pacientesContainer = document.getElementById('pacientesContainer');
         pacientes.forEach(paciente => {
-            const pacienteButton = document.createElement('button');
+            const pacienteButton = document.createElement('p');
             pacienteButton.textContent = paciente.nombre;
             pacienteButton.addEventListener('click', () => {
                 window.location.href = `/pacientes?nombre=${userName}&paciente=${paciente.nombre}`;
