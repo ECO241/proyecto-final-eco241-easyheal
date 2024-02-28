@@ -6,6 +6,8 @@
     <title>Register</title>
 </head>
 <body>
+
+    <img src="/img/Logo design_Mesa de trabajo 1 copia 6.png" alt="Logo easyheal">
     <form action="/registro" method="POST">
         <h1>Registro</h1>
         <label for="rol">Selecciona tu tipo de usuario:</label>
@@ -28,15 +30,17 @@
     
         
 
-   
-   
+    <button id="back">Atras</button>
     <script src="../../index.js"></script>
-
     <script>
+      document.getElementById('back').addEventListener('click', function() {
+    window.location.href = '/about';})
+   
+    </script>
        
 
  
     
-   </script>
+   </>
 </body>
 </html>

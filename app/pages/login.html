@@ -6,6 +6,8 @@
     <title>Inicio Sesión</title>
 </head>
 <body>
+
+    <img src="/img/Logo design_Mesa de trabajo 1 copia 6.png" alt="Logo easyheal">
     <h1>Iniciar Sesión</h1>
     <form action="/login" method="POST">
         <label for="rol">Selecciona tu tipo de usuario:</label>
@@ -21,7 +23,12 @@
         <button type="submit">Iniciar Sesión</button>
         <p>¿No tienes cuenta? <a href="/reg">Regístrate</a></p>
     </form>
-    <script src="../../index.js"></script>
 
+    <button id="back">Atras</button>
+    <script src="../../index.js"></script>
+<script>
+      document.getElementById('back').addEventListener('click', function() {
+    window.location.href = '/about';})
+</script>
 </body>
 </html>

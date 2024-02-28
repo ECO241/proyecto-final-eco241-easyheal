@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recibidor Doctor</title>
+    <title>Recibidor del Doctor</title>
 </head>
 <body>
-
   
     <div id="welcomeMessage"></div>
+
+    <div id="pacientesContainer"></div>
+    <button id="logoutButton">Cerrar sesión</button>
   
     <script>
         // Función para obtener el nombre del usuario de la URL
@@ -27,9 +29,37 @@
                 welcomeMessageElement.textContent = 'Bienvenido';
             }
         }
-    
-        // Llamar a la función para mostrar el mensaje de bienvenida al cargar la página
+
+        document.getElementById('logoutButton').addEventListener('click', () => {
+            sessionStorage.removeItem('userName');
+           
+            window.location.href = '/log'; 
+        });
+
+   // Función para obtener y mostrar los usuarios pacientes
+async function fetchAndDisplayPacientes() {
+    try {
+        const userName = getUserName();
+        const response = await fetch('/registros');
+        const registros = await response.json();
+        const pacientes = registros.pacientes;
+        const pacientesContainer = document.getElementById('pacientesContainer');
+        pacientes.forEach(paciente => {
+            const pacienteButton = document.createElement('button');
+            pacienteButton.textContent = paciente.nombre;
+            pacienteButton.addEventListener('click', () => {
+                window.location.href = `/pacientes?nombre=${userName}&paciente=${paciente.nombre}`;
+            });
+            pacientesContainer.appendChild(pacienteButton);
+        });
+    } catch (error) {
+        console.error('Error al obtener los usuarios pacientes:', error);
+    }
+}
+
+        // Llamar a las funciones al cargar la página
         displayWelcomeMessage();
+        fetchAndDisplayPacientes();
     </script>
     
     <script src="../../index.js"></script>

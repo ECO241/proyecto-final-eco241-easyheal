@@ -3,22 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recibidor Paciente</title>
+    <title>Historial de formulas</title>
 </head>
 <body>
     <div id="welcomeMessage"></div>
-    <button type="submit" id="historial">Historial de formulas</button>
-    <button type="submit" id="Estado">Estado de formulas</button>
- 
+    <button>Notificaciones</button>
     
     <script src="../../index.js"></script>
    <script>
-       document.getElementById('historial').addEventListener('click', function() {
-        window.location.href = '/historial';})
-
-        document.getElementById('Estado').addEventListener('click', function() {
-        window.location.href = '/estado';})
-
+  
  
         // Función para obtener el nombre del usuario de la URL
         function getUserName() {
