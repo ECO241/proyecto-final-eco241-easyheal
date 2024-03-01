@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/styles.css">
+    <title>Mensajes Doctor</title>
+</head>
+<body>
+    <h1>Fármacos</h1>
+    <input id="buscaMedicina" type="search">
+    <div id="contendorCards">
+        <p class="card">Help</p>
+        <p class="card">Me</p>
+        <p class="card">Please</p>
+    </div>
+
+    <script src="../../index.js"></script>
+    <script>
+        document.addEventListener("keyup", e => {
+            if (e.target.matches('#buscaMedicina')){
+                document.querySelectorAll('.card').forEach(medicine => {
+                    medicine.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+                    ?medicine.classList.remove('filtro')
+                    :medicine.classList.add('filtro')
+                })
+            }
+        })
+    </script>
+</body>
+</html>
