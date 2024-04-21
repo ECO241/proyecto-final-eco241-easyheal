@@ -6,7 +6,9 @@
     <title>Register</title>
 </head>
 <body>
-    <form action="/registro" method="POST">
+
+    <img src="/img/Logo design_Mesa de trabajo 1 copia 6.png" alt="Logo easyheal">
+    <form action="/registrar-usuario" method="POST">
         <h1>Registro</h1>
         <label for="rol">Selecciona tu tipo de usuario:</label>
         <select id="rol" name="rol" required>
@@ -16,29 +18,30 @@
             <option value="farmacia">Farmacia</option>
         </select>
         
-        <label for="nombre">Usuario</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Nombre de usuario" required>
+        <label for="nombre">Nombre Completo</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
+        <label for="correo">Correo Electrónico</label>
+        <input type="email" id="correo" name="correo" placeholder="Correo electrónico" required>
         <label for="contraseña">Contraseña</label>
         <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" required>
         <label for="repetir_contraseña">Repetir contraseña</label>
         <input type="password" id="repetir_contraseña" name="repetir_contraseña" placeholder="Repetir contraseña" required>
-        <button type="submit" id="boton">Registrarse</button>
-        <p>¿Ya tienes una cuenta? <a href="/log">Inicia sesión</a></p>
+        <button type="submit" id="registro">Registrarse</button>
+        <p>¿Ya tienes una cuenta? <a href="/iniciar-sesion">Inicia sesión</a></p>
     </form>
     
         
 
-   
-   
+    <button id="back">Atras</button>
     <script src="../../index.js"></script>
-
     <script>
-        document.getElementById('boton').addEventListener('click', function() {
-        window.location.href = '/log';})
-
-  
-
+      document.getElementById('back').addEventListener('click', function() {
+    window.location.href = '/acerca';})
+   
     </script>
-   </script>
+       
+
+ 
+
 </body>
 </html>

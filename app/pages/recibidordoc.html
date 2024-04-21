@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recibidor del Doctor</title>
+</head>
+<body>
+  
+    <div id="welcomeMessage"></div>
+
+    <div id="pacientesContainer"></div>
+    <button id="logoutButton">Cerrar sesión</button>
+  
+    <script>
+         // Función para obtener el nombre del usuario de la URL
+         function getUserName() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('nombre');
+        }
+    
+        // Función para mostrar el mensaje de bienvenida con el nombre del usuario
+        function displayWelcomeMessage() {
+            const userName = getUserName();
+            const welcomeMessageElement = document.getElementById('welcomeMessage');
+            if (userName) {
+                welcomeMessageElement.textContent = `Bienvenido, Dr ${userName}`;
+            }
+        }
+
+        document.getElementById('logoutButton').addEventListener('click', () => {
+            sessionStorage.removeItem('userName');
+            window.location.href = '/iniciar-sesion'; 
+        });
+
+        // Función para obtener y mostrar los usuarios pacientes
+        async function fetchAndDisplayPacientes() {
+            try {
+                const userName = getUserName();
+                const response = await fetch('/api/usuarios');
+                const registros = await response.json();
+                const pacientes = registros.pacientes;
+                const pacientesContainer = document.getElementById('pacientesContainer');
+                pacientes.forEach(paciente => {
+                    const pacienteButton = document.createElement('p');
+                    pacienteButton.textContent = paciente.nombre;
+                    pacienteButton.addEventListener('click', () => {
+                        window.location.href = `/pacientes?nombre=${userName}&paciente=${paciente.nombre}`;
+                    });
+                    pacientesContainer.appendChild(pacienteButton);
+                });
+            } catch (error) {
+                console.error('Error al obtener los usuarios pacientes:', error);
+            }
+        }
+
+        // Llamar a las funciones al cargar la página
+        displayWelcomeMessage();
+        fetchAndDisplayPacientes();
+    </script>
+    
+    <script src="../../index.js"></script>
+   
+</body>
+</html>
