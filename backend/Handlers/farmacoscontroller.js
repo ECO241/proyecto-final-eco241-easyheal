@@ -1,4 +1,4 @@
-const { supabase } = require("../config/supabase"); // Importa el cliente de Supabase
+const supabase = require("../config/supabase"); // Importa el cliente de Supabase
 const esquemaMedicamento = require("../schemas/drugZod");
 
 const reducirInventario = async (medicamentos) => {

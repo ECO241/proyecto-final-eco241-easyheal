@@ -1,4 +1,4 @@
-const { supabase } = require("../utils/supabase"); // Importa el cliente de Supabase
+const supabase  = require("../utils/supabase"); // Importa el cliente de Supabase
 const esquemaFormula = require("../schemas/formulaZod");
 
 const crearFormula = async (req, res) => {
