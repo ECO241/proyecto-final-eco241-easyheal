@@ -1,6 +1,6 @@
 const express = require("express");
 const routerFormulas = express.Router();
-const esquemaFormula = require('../schemas/formulaZod')
+
 
 routerFormulas.route('/')
     .get((req, res) => {

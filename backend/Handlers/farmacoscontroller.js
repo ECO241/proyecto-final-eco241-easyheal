@@ -1,0 +1,1 @@
+const esquemaMedicamento = require('../schemas/drugZod')

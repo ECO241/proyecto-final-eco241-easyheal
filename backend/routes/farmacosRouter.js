@@ -1,6 +1,6 @@
 const express = require("express");
 const routerFarmacos = express.Router();
-const esquemaMedicamento = require('../schemas/drugZod')
+
 
 routerFarmacos.route('/')
     .get((req, res) => {
