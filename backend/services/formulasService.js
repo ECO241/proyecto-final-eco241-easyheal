@@ -31,7 +31,7 @@ const formulasService = {
     return data;
   },
 
-  createFormula: async (id, idMedicos, idPaciente, medicamentos,) => {
+  createFormula: async (id, idMedicos, idPaciente, medicamentos) => {
     try {
       const { error } = await supabase
         .from("formulas")
