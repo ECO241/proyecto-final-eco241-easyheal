@@ -1,45 +1,35 @@
-import supabase from "../utils/supabase"; // Importa el cliente de Supabase
-import esquemaMedicamento from "../schemas/drugZod";
+import farmacosService from "../services/farmacosService";
 
-const reducirInventario = async (medicamentos) => {
-  try {
-    // Recorre la lista de medicamentos en la fórmula
-    for (const medicamento of medicamentos) {
-      const { nombre, cantidad } = medicamento;
-
-      // Consulta el medicamento en la base de datos para obtener su cantidad actual
-      const { data: medicamentoActual } = await supabase
-        .from("farmacos")
-        .select("cantidad")
-        .eq("nombre", nombre)
-        .single();
-
-      if (!medicamentoActual) {
-        throw new Error(
-          `El medicamento ${nombre} no se encontró en el inventario.`
-        );
-      }
-
-      // Calcula la nueva cantidad del medicamento en inventario
-      const nuevaCantidad = medicamentoActual.cantidad - cantidad;
-
-      if (nuevaCantidad < 0) {
-        throw new Error(
-          `No hay suficientes existencias del medicamento ${nombre}.`
-        );
-      }
-
-      // Actualiza la cantidad del medicamento en inventario en la base de datos
-      await supabase
-        .from("farmacos")
-        .update({ cantidad: nuevaCantidad })
-        .eq("nombre", nombre);
+const farmacosController = {
+  getAllFarmacos: async (req, res) => {
+    try{
+      const data = await farmacosService.getAllFarmacos();
+      res.json({ success: true, data});
+    } catch (error) {
+      console.error("Error retrieving data from Supabase:", error.message);
+      res.status(500).json({ success: false, error: "Internal Server Error"});      
     }
-  } catch (error) {
-    console.error("Error al reducir el inventario de medicamentos:", error);
-    throw error;
-  }
-};
+  },
+  getFarmacoById: async (req, res) => {
+    try{
+      const data = await farmacosController.getFarmacoById(req.params.id);
+      res.json({ success: true, data});      
+    } catch (error) {
+      console.error("Error retrieving data from Supabase:", error.message);
+      res.status(500).json({ success: false, error: "Internal Server Error"}); 
+    }
+  },
+  deleteFarmaco: async (req, res) => {
+    try{
+      await farmacosService.deleteFarmaco(req.params.id);
+      res.json({ success: true, message: "Medicamento restado del inventario"});      
+    } catch (error) {
+      console.error("Error al restar medicamento del inventario", error.message);
+      res.status(500).json({ success: false, error: "Internal Server Error"}); 
+    }
+  },
+  
+}
 
-export { reducirInventario };
+export default farmacosController;
 

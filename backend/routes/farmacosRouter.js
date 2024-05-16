@@ -1,11 +1,13 @@
 import express from "express";
 const routerFarmacos = express.Router();
-import farmacosController from '../controllers/farmacoscontroller';
 
-// Ruta para reducir el inventario de fármacos
-routerFarmacos.post('/reducir-inventario', farmacosController.reducirInventario);
+// Importar controlador de farmacos
+import farmacosController from "../controllers/farmacoscontroller";
 
-// Otras rutas para los fármacos...
+// Traer todos los medicamentos
 
 
-export {routerFarmacos};
+
+
+
+export default routerFarmacos;

@@ -1,33 +1,33 @@
-import supabase from "../utils/supabase"; // Importa el cliente de Supabase
-import esquemaFormula from "../schemas/formulaZod";
+import formulasService from "../services/formulasService";
 
 const formulasController = {
-  
+  getAllformulas: async (req, res) => {
+    try{
+      const data = await formulasService.getAllFormulas();
+      res.json({ success: true, data});
+    } catch (error) {
+      console.error("Error retrieving data from Supabase:", error.message);
+      res.status(500).json({ success: false, error: "Internal Server Error"});      
+    }
+  },
+  getFormulaById: async (req, res) => {
+    try{
+      const data = await formulasService.getFormulaById(req.params.id);
+      res.json({ success: true, data});      
+    } catch (error) {
+      console.error("Error retrieving data from Supabase:", error.message);
+      res.status(500).json({ success: false, error: "Internal Server Error"}); 
+    }
+  },
+  createFormula: async (req, res) => {
+    try{
+      await formulasService.createFormula(req.body);
+      res.json({ success: true, message: "Formulada creada correctamente", });
+    } catch (error) {
+      console.error("Error al crear formula in supabase", error.message);
+      res.status(500).json({ success: false, error: "Internal Server Error" });
+    }
+  }
 }
 
-const crearFormula = async (req, res) => {
-  const { codigoQR, nombreDoctor, estado, listaFarmaco } = req.body;
-
-  try {
-    // Validar los datos de la fórmula utilizando Zod
-    const formulaData = esquemaFormula.parse(req.body);
-
-    // Almacenar la fórmula en una tabla personalizada en Supabase
-    const { data, error } = await supabase
-      .from("formulas")
-      .insert({ codigoQR, nombreDoctor, estado, listaFarmaco });
-
-    if (error) {
-      return res.status(500).json({ error: "Error al crear la fórmula." });
-    }
-
-    res.status(201).json({ mensaje: "Fórmula creada exitosamente." });
-  } catch (error) {
-    console.error("Error al crear la fórmula:", error);
-    res.status(400).json({ error: error.errors });
-  }
-};
-
-// Otras funciones del controlador de fórmulas...
-
-export { crearFormula, formulasController };
+export default formulasController;

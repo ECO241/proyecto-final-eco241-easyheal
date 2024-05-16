@@ -1,13 +1,20 @@
 import express from "express";
 const routerFormulas = express.Router();
-import formulasController from '../controllers/formulasController';
 
-// Ruta para crear una nueva fórmula
-routerFormulas.post('/crear', formulasController.crearFormula);
+// Importar el controlador para formulas
+import formulasController from "../controllers/formulascontroller";
 
-// Otras rutas para las fórmulas...
+// Traer todas las formulas
+routerFormulas.get('/', formulasController.getAllformulas);
 
-export {routerFormulas};
+// Traer formula por ID
+routerFormulas.get('/', formulasController.getFormulaById)
+
+// Crear una formula
+routerFormulas.post('/', formulasController.createFormula);
+
+
+export default routerFormulas;
 
 
 
