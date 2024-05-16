@@ -1,5 +1,9 @@
-const supabase  = require("../utils/supabase"); // Importa el cliente de Supabase
-const esquemaFormula = require("../schemas/formulaZod");
+import supabase from "../utils/supabase"; // Importa el cliente de Supabase
+import esquemaFormula from "../schemas/formulaZod";
+
+const formulasController = {
+  
+}
 
 const crearFormula = async (req, res) => {
   const { codigoQR, nombreDoctor, estado, listaFarmaco } = req.body;
@@ -26,4 +30,4 @@ const crearFormula = async (req, res) => {
 
 // Otras funciones del controlador de fórmulas...
 
-module.exports = { crearFormula };
+export { crearFormula, formulasController };

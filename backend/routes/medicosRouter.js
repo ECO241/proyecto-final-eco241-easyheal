@@ -1,6 +1,6 @@
-const express = require("express");
+import express from "express";
 const routerMedicos = express.Router();
-const medicosController = require('../Handlers/medicosController');
+import medicosController from '../controllers/medicosController';
 
 
 // Ruta para registrar un paciente
@@ -11,4 +11,4 @@ routerMedicos.post('/login', medicosController.loginPaciente);
 
 
 
-module.exports = routerMedicos
+export {routerMedicos};

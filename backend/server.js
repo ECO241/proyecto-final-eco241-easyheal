@@ -1,14 +1,14 @@
 // Importación de los módulos necesarios
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
 const app = express();
-const bodyParser = require('body-parser');
+import bodyParser from 'body-parser';
 
 // Definir rutas
-const routerFarmacos = require('./router/farmacosRouter')
-const routerFormulas = require('./router/formulasRouter')
-const routerMedicos = require('./router/usuariosDefaultRouter')
-const routerPacientes = require('./router/usuariosDefaultRouter')
+import routerFarmacos from './routes/farmacosRouter';
+import routerFormulas from './routes/formulasRouter';
+import routerMedicos from './routes/medicosRouter';
+import routerPacientes from './routes/pacientesRouter';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

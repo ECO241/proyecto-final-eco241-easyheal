@@ -1,6 +1,6 @@
-const express = require("express");
+import express from "express";
 const routerFarmacos = express.Router();
-const farmacosController = require('../controllers/farmacosController');
+import farmacosController from '../controllers/farmacoscontroller';
 
 // Ruta para reducir el inventario de fármacos
 routerFarmacos.post('/reducir-inventario', farmacosController.reducirInventario);
@@ -8,4 +8,4 @@ routerFarmacos.post('/reducir-inventario', farmacosController.reducirInventario)
 // Otras rutas para los fármacos...
 
 
-module.exports = routerFarmacos
+export {routerFarmacos};

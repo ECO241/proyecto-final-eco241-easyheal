@@ -1,5 +1,5 @@
-const supabase = require("../config/supabase"); // Importa el cliente de Supabase
-const esquemaMedicamento = require("../schemas/drugZod");
+import supabase from "../utils/supabase"; // Importa el cliente de Supabase
+import esquemaMedicamento from "../schemas/drugZod";
 
 const reducirInventario = async (medicamentos) => {
   try {
@@ -41,4 +41,5 @@ const reducirInventario = async (medicamentos) => {
   }
 };
 
-module.exports = { reducirInventario };
+export { reducirInventario };
+

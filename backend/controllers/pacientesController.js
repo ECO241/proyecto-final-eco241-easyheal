@@ -1,5 +1,5 @@
-const supabase  = require("../utils/supabase"); // Importa el cliente de Supabase
-const esquemaUsuario = require("../schemas/userZod");
+import supabase from "../utils/supabase"; // Importa el cliente de Supabase
+import esquemaUsuario from "../schemas/userZod";
 
 const registrarPaciente = async (req, res) => {
   const { nombre, email, contraseña, tipoUsuario } = req.body;
@@ -59,4 +59,4 @@ const loginPaciente = async (req, res) => {
   }
 };
 
-module.exports = { registrarPaciente, loginPaciente };
+export { registrarPaciente, loginPaciente };

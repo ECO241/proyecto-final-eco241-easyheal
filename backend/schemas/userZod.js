@@ -1,4 +1,4 @@
-const z = require('zod')
+import z from'zod';
 
 const esquemaUsuario = z.object({
     nombre: z.string(),
@@ -7,4 +7,4 @@ const esquemaUsuario = z.object({
     tipoUsuario: z.string(),
 });
 
-module.exports = esquemaUsuario
+export {esquemaUsuario};

@@ -1,13 +1,13 @@
-const express = require('express');
+import express from "express";
 const routerFormulas = express.Router();
-const formulasController = require('../controllers/formulasController');
+import formulasController from '../controllers/formulasController';
 
 // Ruta para crear una nueva fórmula
 routerFormulas.post('/crear', formulasController.crearFormula);
 
 // Otras rutas para las fórmulas...
 
-module.exports = routerFormulas;
+export {routerFormulas};
 
 
 
