@@ -4,6 +4,7 @@ import cors from 'cors';
 const app = express();
 import bodyParser from 'body-parser';
 
+
 // Definir rutas
 import routerFarmacos from './routes/farmacosRouter.js';
 import routerFormulas from './routes/formulasRouter.js';
@@ -25,4 +26,3 @@ const port = 3000;
 
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
-});

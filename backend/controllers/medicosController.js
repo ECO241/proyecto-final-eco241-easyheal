@@ -1,5 +1,7 @@
-import supabase from "../utils/supabase"; // Importa el cliente de Supabase
+
+
 import esquemaUsuario from "../schemas/userZod.js";
+
 
 const registrarMedico = async (req, res) => {
   const { nombre, email, contraseña, tipoUsuario } = req.body;
