@@ -1,6 +1,6 @@
 import express from "express";
 const routerPacientes = express.Router();
-import pacientesController from '../controllers/pacientesController';
+import pacientesController from '../controllers/pacientesController.js';
 
 
 // Ruta para registrar un paciente

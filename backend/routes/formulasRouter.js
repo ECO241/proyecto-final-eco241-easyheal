@@ -2,7 +2,7 @@ import express from "express";
 const routerFormulas = express.Router();
 
 // Importar el controlador para formulas
-import formulasController from "../controllers/formulascontroller";
+import formulasController from "../controllers/formulasController.js";
 
 // Traer todas las formulas
 routerFormulas.get('/', formulasController.getAllformulas);
@@ -15,7 +15,6 @@ routerFormulas.post('/', formulasController.createFormula);
 
 
 export default routerFormulas;
-
 
 
 

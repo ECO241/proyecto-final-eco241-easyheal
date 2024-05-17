@@ -1,4 +1,4 @@
-import formulasService from "../services/formulasService";
+import formulasService from "../services/formulasService.js";
 
 const formulasController = {
   getAllformulas: async (req, res) => {

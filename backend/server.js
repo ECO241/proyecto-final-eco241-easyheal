@@ -5,21 +5,20 @@ const app = express();
 import bodyParser from 'body-parser';
 
 // Definir rutas
-import routerFarmacos from './routes/farmacosRouter';
-import routerFormulas from './routes/formulasRouter';
-import routerMedicos from './routes/medicosRouter';
-import routerPacientes from './routes/pacientesRouter';
+import routerFarmacos from './routes/farmacosRouter.js';
+import routerFormulas from './routes/formulasRouter.js';
+// import routerMedicos from './routes/medicosRouter.js';
+// import routerPacientes from './routes/pacientesRouter.js';
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+ app.use(express.json());
+ app.use(express.urlencoded({ extended: true }));
+ app.use(cors());
 
 // Enrutamientos
-
-app.use('/Farmacos', routerFarmacos);
+ app.use('/Farmacos', routerFarmacos);
 app.use('/Formulas', routerFormulas);
-app.use('/Medicos', routerMedicos);
-app.use('/Pacientes', routerPacientes);
+// app.use('/Medicos', routerMedicos);
+// app.use('/Pacientes', routerPacientes);
 
 
 const port = 3000;
