@@ -6,19 +6,19 @@
     <title>Recibidor del Doctor</title>
 </head>
 <body>
-  
+
     <div id="welcomeMessage"></div>
 
     <div id="pacientesContainer"></div>
     <button id="logoutButton">Cerrar sesión</button>
-  
+
     <script>
          // Función para obtener el nombre del usuario de la URL
          function getUserName() {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get('nombre');
         }
-    
+
         // Función para mostrar el mensaje de bienvenida con el nombre del usuario
         function displayWelcomeMessage() {
             const userName = getUserName();
@@ -30,7 +30,7 @@
 
         document.getElementById('logoutButton').addEventListener('click', () => {
             sessionStorage.removeItem('userName');
-            window.location.href = '/iniciar-sesion'; 
+            window.location.href = '/iniciar-sesion';
         });
 
         // Función para obtener y mostrar los usuarios pacientes
@@ -58,8 +58,7 @@
         displayWelcomeMessage();
         fetchAndDisplayPacientes();
     </script>
-    
+
     <script src="../../index.js"></script>
-   
 </body>
 </html>
