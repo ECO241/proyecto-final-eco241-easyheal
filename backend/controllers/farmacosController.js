@@ -1,4 +1,6 @@
-import farmacosService from "../services/farmacosService";
+
+import farmacosService from "../services/farmacosService.js";
+
 
 const farmacosController = {
   getAllFarmacos: async (req, res) => {
