@@ -10,6 +10,10 @@ const server = http.createServer(app)
 const {Server} = require ('socket.io')
 const io = new Server(server)
 
+io.on('connection', (socket)=>{
+    console.log('el usuario se conectó')
+})
+
 app.get('/' , (req, res)=>{
     res.sendFile(`${__dirname}./src/frontend_paciente/index.html`)
 })
