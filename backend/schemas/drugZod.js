@@ -1,4 +1,4 @@
-const z = require('zod')
+import z from'zod';
 
 const esquemaMedicamento = z.object({
     nombre: z.string(),
@@ -8,5 +8,5 @@ const esquemaMedicamento = z.object({
     precio_unitario: z.number(),
 });
 
-module.exports = esquemaMedicamento
+export {esquemaMedicamento}
 

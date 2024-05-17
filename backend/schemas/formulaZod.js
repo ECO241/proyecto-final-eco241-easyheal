@@ -1,4 +1,4 @@
-const z = require('zod')
+import z from'zod';
 
 const esquemaFormula = z.object({
   codigoQR: z.string(),
@@ -10,4 +10,4 @@ const esquemaFormula = z.object({
   })),
 });
 
-module.exports = esquemaFormula
+export {esquemaFormula};

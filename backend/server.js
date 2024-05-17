@@ -1,25 +1,25 @@
 // Importación de los módulos necesarios
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
 const app = express();
-const bodyParser = require('body-parser');
+import bodyParser from 'body-parser';
+
 
 // Definir rutas
-const routerFarmacos = require('./routes/farmacosRouter')
-const routerFormulas = require('./routes/formulasRouter')
-const routerMedicos = require('./routes/medicosRouter')
-const routerPacientes = require('./routes/pacientesRouter')
+import routerFarmacos from './routes/farmacosRouter.js';
+import routerFormulas from './routes/formulasRouter.js';
+// import routerMedicos from './routes/medicosRouter.js';
+// import routerPacientes from './routes/pacientesRouter.js';
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+ app.use(express.json());
+ app.use(express.urlencoded({ extended: true }));
+ app.use(cors());
 
 // Enrutamientos
-
-app.use('/Farmacos', routerFarmacos);
+ app.use('/Farmacos', routerFarmacos);
 app.use('/Formulas', routerFormulas);
-app.use('/Medicos', routerMedicos);
-app.use('/Pacientes', routerPacientes);
+// app.use('/Medicos', routerMedicos);
+// app.use('/Pacientes', routerPacientes);
 
 
 const port = 3000;
