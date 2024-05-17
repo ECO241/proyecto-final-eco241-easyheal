@@ -4,6 +4,15 @@ import cors from 'cors';
 const app = express();
 import bodyParser from 'body-parser';
 
+const http = require('http')
+const server = http.createServer(app)
+
+const {Server} = require ('socket.io')
+const io = new Server(server)
+
+app.get('/' , (req, res)=>{
+    res.sendFile(`${__dirname}./src/frontend_paciente/index.html`)
+})
 
 // Definir rutas
 import routerFarmacos from './routes/farmacosRouter.js';
