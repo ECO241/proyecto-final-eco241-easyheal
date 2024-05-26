@@ -9,7 +9,7 @@ const canvas = canvasElement.getContext("2d");
 const btnScanQR = document.getElementById("btn-scan-qr");
 
 //lectura desactivada
-let scanning = true;
+let scanning = false;
 
 //funcion para encender la camara
 const encenderCamara = () => {
@@ -53,7 +53,10 @@ const cerrarCamara = () => {
   btnScanQR.hidden = false;
 };
 
-
+const activarSonido = () => {
+  var audio = document.getElementById('audioScaner');
+  audio.play();
+}
 
 //callback cuando termina de leer el codigo QR
 qrcode.callback = (respuesta) => {
@@ -67,9 +70,9 @@ qrcode.callback = (respuesta) => {
   }
 };
 //evento para mostrar la camara sin el boton 
-window.addEventListener('load', (e) => {
-  encenderCamara();
-})
+//window.addEventListener('load', (e) => {
+  //encenderCamara();
+//})
 
 
 
