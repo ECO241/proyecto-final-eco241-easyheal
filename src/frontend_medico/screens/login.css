@@ -1,0 +1,122 @@
+body {
+    background: #f5f4f4;
+    align-items: center;
+    margin: 0;
+    
+}
+
+h1{
+    width: 297px;
+    height: 65px;
+    font-family: Satoshi;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 65px;
+    text-align: center;
+    color: #001b26;
+    margin-left: 255px;
+}
+
+label{
+    font-family: Satoshi;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    text-align: left;
+ 
+    color: #001b26;
+}
+
+input{
+    width: 350px;
+    height: 50px;
+    background: #ffffff;
+    border: 0.5px solid #001b26;
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+    font-family: Satoshi;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 28px;
+    text-align: left;
+    color: #8c8a8a;
+}
+
+#password{
+    margin-bottom: 0;
+}
+
+#rol{
+    border-radius: 10px;
+    border-color: #04bf8a;
+    width: 350px;
+    height: 50px;
+    font-family: Satoshi;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: left;
+    color: #001b26;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 1050px;
+    margin: auto;
+}
+
+button{
+    width: 350px;
+    height: 30px;
+    margin-top: 40px;
+    border-radius: 5px;
+    background-color: #04bf8a;
+
+    font-family: Satoshi;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 25px;
+    text-align: center;
+    color: #f5f4f4;
+
+}
+
+p{
+    font-family: Satoshi;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: left;
+    text-decoration-line: Unhandled text decoration;
+    
+    color: #001b26;
+}
+
+#Logo{
+    width: 137px;
+    height: 147px;
+    margin-left: 330px;
+}
+
+#contraseñas{
+    font-family: Satoshi;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: left;
+    text-decoration-line: underline;
+    margin-bottom: 20px;
+    color: #001b26;
+}
+
+#doc{
+    width: 600px; /* Ajusta el tamaño según sea necesario */
+    height: 740px;
+    right: 100px;
+}
