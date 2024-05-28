@@ -1,0 +1,67 @@
+body{
+    background-color: #f5f4f4;
+}
+
+#nueva{
+    width: 471px;
+    height: 213px;
+    background: #04bf8a;
+    border-radius: 31px;
+    border-color: transparent;
+    font-family: Satoshi;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 54px;
+    text-align: center;
+    color: #ffffff;
+    margin-right: 40px;
+}
+
+#historial{
+    width: 471px;
+    height: 213px;
+    background: #001b26;
+    border-radius: 31px;
+    border-color: transparent;
+    font-family: Satoshi;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 54px;
+    text-align: center;
+    color: #ffffff;
+}
+
+img{
+    width: 40px;
+    height: 40px;
+}
+
+#next{
+    border-color: transparent;
+    background-color: transparent;
+}
+
+#back{
+    border-color: transparent;
+    background-color: transparent;
+    margin-right: 580px;
+}
+
+h2{
+    margin-right: 700px;
+    font-family: Satoshi;
+}
+
+#pacientes{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px; 
+}
+
+#Formula{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

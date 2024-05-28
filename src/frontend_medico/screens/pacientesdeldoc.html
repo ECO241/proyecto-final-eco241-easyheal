@@ -4,15 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pacientes del Doctor</title>
+    <link rel="stylesheet" href="pacientesdeldoc.css">
 </head>
 <body>
+
+    <div id="pacientes">
+        <button id="back"><img src="/src/frontend_medico/img/atras.png" alt=""></button>
+        <h2>Pacientes</h2>
+        <button id="next"><img src="/src/frontend_medico/img/salir.png" alt=""></button>
+    </div>
+
    
     <div id="patientNameContainer"></div>
-    <button>Generar nueva formula</button>
-    <button>Historial de formulas</button>
-
+    <div id="Formula">
+        <button id="nueva">Generar nueva formula <img src="/src/frontend_medico/img/cruz.png" alt=""></button>
+        <button id="historial">Historial de formulas <img src="/src/frontend_medico/img/flechaconcir.png" alt=""></button>
+    </div>
+   
     
-    <button id="back">Atrás</button>
+    
 
     <script>
         // Función para obtener el nombre del doctor de la URL
