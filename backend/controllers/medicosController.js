@@ -1,7 +1,4 @@
-
-
 import esquemaUsuario from "../schemas/userZod.js";
-
 
 const registrarMedico = async (req, res) => {
   const { nombre, email, contraseña, tipoUsuario } = req.body;
