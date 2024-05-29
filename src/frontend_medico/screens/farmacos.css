@@ -1,0 +1,74 @@
+body{
+    background: #f5f4f4;
+}
+
+h2{
+    margin-right: 680px;
+    font-family: Satoshi;
+    color: #001b26;
+    display: flex;
+}
+
+input{
+    width: 588px;
+    height: 57px;
+    background: rgba(211, 211, 211, 0.7900000214576721);
+    border-radius: 18px;
+    border-color: transparent;
+    font-family: Satoshi;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 22px;
+    color: #909090;
+    margin-right: 40px;
+    padding-left: 20px;
+    
+}
+
+#Generarformula{
+    width: 452px;
+    height: 46px;
+    border: 1.5px solid #001b26;
+    border-radius: 10px;
+    font-family: Satoshi;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #001b26;
+}
+
+#atras{
+    border-color: transparent;
+    background-color: transparent;
+    margin-right: 580px;
+}
+
+#back{
+    width: 48px;
+    height: 48px;
+    align-items: center;
+}
+
+#arriba{
+    display: flex;
+    flex-direction: row; 
+    margin-right: 580px;
+}
+
+h3{
+    font-family: Satoshi;
+    font-style: normal;
+    color: #001b26;
+    text-align: center;
+}
+
+
+#Todo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
