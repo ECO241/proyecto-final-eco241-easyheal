@@ -2,7 +2,6 @@ body {
     background: #f5f4f4;
     align-items: center;
     margin: 0;
-    
 }
 
 h1{
@@ -15,7 +14,8 @@ h1{
     line-height: 65px;
     text-align: center;
     color: #001b26;
-    margin-left: 255px;
+    margin-left: 10%;
+    margin-top: 20px;
 }
 
 label{
@@ -30,7 +30,7 @@ label{
 }
 
 input{
-    width: 350px;
+    width: 345px;
     height: 50px;
     background: #ffffff;
     border: 0.5px solid #001b26;
@@ -56,7 +56,7 @@ input{
     height: 50px;
     font-family: Satoshi;
     font-style: normal;
-    font-size: 20px;
+    font-size: 17px;
     line-height: 30px;
     text-align: left;
     color: #001b26;
@@ -67,22 +67,22 @@ form{
     flex-direction: column;
     max-width: 1050px;
     margin: auto;
+    margin-top: 3%;
 }
 
-button{
+#inicio{
     width: 350px;
-    height: 30px;
+    height: 45px;
     margin-top: 40px;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #04bf8a;
-
     font-family: Satoshi;
     font-style: normal;
     font-size: 15px;
     line-height: 25px;
     text-align: center;
     color: #f5f4f4;
-
+    cursor: pointer;
 }
 
 p{
@@ -91,32 +91,57 @@ p{
     font-weight: 300;
     font-size: 14px;
     line-height: 18px;
-    text-align: left;
+    text-align: center;
     text-decoration-line: Unhandled text decoration;
-    
     color: #001b26;
 }
 
 #Logo{
     width: 137px;
     height: 147px;
-    margin-left: 330px;
+    margin-left: 30%;
+    margin-top: 0px;
 }
 
 #contraseñas{
     font-family: Satoshi;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 500;
     font-size: 14px;
     line-height: 18px;
-    text-align: left;
+    text-align: right;
     text-decoration-line: underline;
     margin-bottom: 20px;
     color: #001b26;
 }
 
 #doc{
-    width: 600px; /* Ajusta el tamaño según sea necesario */
-    height: 740px;
+    width: 700px; /* Ajusta el tamaño según sea necesario */
+    height: 840px;
     right: 100px;
 }
+
+.todo{
+    display: flex;
+    flex-direction: row;
+}
+
+#back{
+    width: 350px;
+    height: 46px;
+    border: 1.5px solid #001b26;
+    border-radius: 10px;
+    font-family: Satoshi;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #001b26;
+    cursor: pointer;
+}
+
+#back:hover{
+    background-color: #e0f7fa;
+}
+

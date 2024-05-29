@@ -40,6 +40,11 @@ input{
     color: #001b26;
 }
 
+.generate button:hover{
+    cursor: pointer;
+    background-color: #e0f7fa;
+}
+
 #atras{
     border-color: transparent;
     background-color: transparent;

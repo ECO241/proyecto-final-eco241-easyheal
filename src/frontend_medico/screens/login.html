@@ -8,9 +8,12 @@
 </head>
 <body>
 
-    <img src="/src/frontend_medico/img/Logo design_Mesa de trabajo 1 copia 6.png" alt="Logo easyheal" id="Logo">
-    <h1>Iniciar Sesión</h1>
+  <div class="todo">
+    
     <form action="/inicio-sesion" method="POST">
+
+        <img src="/src/frontend_medico/img/Logo design_Mesa de trabajo 1 copia 6.png" alt="Logo easyheal" id="Logo">
+        <h1>Iniciar Sesión</h1>
 
         <label for="correo">Correo Electrónico</label>
         <input type="email" id="correo" name="correo" placeholder="Correo electrónico" required>
@@ -25,13 +28,14 @@
             <option value="usuario2">Doctor</option>
             <option value="usuario3">Farmacia</option>
         </select>
-        <button type="submit">Iniciar Sesión</button>
+        <button id="inicio" type="submit">Iniciar Sesión</button>
         <p>¿No tienes cuenta? <a href="/registro">Regístrate</a></p>
+        <button id="back">Atrás</button>
 
     </form>
 
-    <button id="back">Atras</button>
     <img src="/src/frontend_medico/img/incio img.png" id="doc" alt="">
+  </div>
 
     <script src="../../index.js"></script>
 <script>
