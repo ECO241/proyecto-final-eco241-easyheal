@@ -14,4 +14,3 @@ routerMedicos.post('/login', medicosController.loginPaciente);
 
 
 export default routerMedicos;
-
