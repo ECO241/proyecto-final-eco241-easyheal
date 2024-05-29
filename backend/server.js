@@ -1,3 +1,4 @@
+
 import express from 'express';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
@@ -8,6 +9,7 @@ const app = express();
 
 import routerFarmacos from './routes/farmacosRouter.js';
 import routerFormulas from './routes/formulasRouter.js';
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -29,8 +31,11 @@ app.get('/farmacoss', (req, res) => {
 app.use('/Farmacos', routerFarmacos);
 app.use('/Formulas', routerFormulas);
 
+
 const port = 3000;
 
 app.listen(port, () => {
+
   console.log(`App listening at http://localhost:${port}`);
 });
+

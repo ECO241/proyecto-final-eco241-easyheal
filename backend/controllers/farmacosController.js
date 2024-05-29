@@ -1,4 +1,5 @@
 
+
 import farmacosService from "../services/farmacosService.js";
 
 
@@ -34,4 +35,3 @@ const farmacosController = {
 }
 
 export default farmacosController;
-
