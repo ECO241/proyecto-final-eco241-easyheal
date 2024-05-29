@@ -7,23 +7,66 @@
     <link rel="stylesheet" href="./pacientes.css">
 </head>
 <body>
-
     <div class="container">
         <div class="header">
-            <h1>Bienvenido Doctor(a) Stefania Sánchez</h1>
+            <h1>Fármacos</h1>
         </div>
         <div class="search-bar">
-            <input type="text" placeholder="Buscar pacientes">
+            <input type="text" placeholder="Buscar fármacos">
         </div>
-        <ul class="patient-list">
-            <li><a href="#">Sara Montes Jiménez</a></li>
-            <li><a href="#">Ana Calle Córdoba</a></li>
-            <li><a href="#">Salomé Ruiz Gallón</a></li>
-            <li><a href="#">Diana Caicedo Cifuentes</a></li>
-            <li><a href="#">David Posso Ruiz</a></li>
-            <li><a href="#">Daniel Caicedo Cifuentes</a></li>
+        <ul class="medication-list">
+            <li>
+                <span>Mieltertos Masticable Natural<br>Freshly Paquete x 4 Pastillas.</span>
+                <button>+</button>
+            </li>
+            <li>
+                <span>Vick Vaporub Alcanfor + Eucalipto<br>Ungüento Frasco x 50 gr.</span>
+                <button>+</button>
+            </li>
+            <li>
+                <span>Strepsils Intensive Miel y Limón Flurbiprofeno<br>8,75 mg RB Health Caja x 16 Tabletas.</span>
+                <button>+</button>
+            </li>
+            <li>
+                <span>Cebión Vitamina C 100mg/ml<br>P&G Fresa Gotas x 30 ml.</span>
+                <button>+</button>
+            </li>
+            <li>
+                <span>Apronax 550 mg Fracción<br>x 4 Tabletas.</span>
+                <button>+</button>
+            </li>
+            <li>
+                <span>Clotrimazol Ag 1% Crema<br>Caja x 40 gr.</span>
+                <button>+</button>
+            </li>
         </ul>
+        <div class="formula">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mieltertos Masticable Natural Freshly Paquete x 4 Pastillas.</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>Vick Vaporub Alcanfor + Eucalipto Ungüento Frasco x 50 gr.</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Strepsils Intensive Miel y Limón Flurbiprofeno 8,75 mg RB Health Caja x 16 Tabletas.</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="generate-button">
+            <button>Generar fórmula</button>
+        </div>
     </div>
-    <script src="../../index.js"></script>
 </body>
 </html>
