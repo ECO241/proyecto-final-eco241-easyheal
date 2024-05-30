@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacientes del Doctor</title>
+    <link rel="stylesheet" href="pacientesdeldoc.css">
+</head>
+<body>
+
+    <div id="pacientes">
+        <button id="back"><img src="/src/frontend_medico/img/atras.png" alt=""></button>
+        <h2>Pacientes</h2>
+        <button id="next"><img src="/src/frontend_medico/img/salir.png" alt=""></button>
+    </div>
+
+   
+    <div id="patientNameContainer"></div>
+    <div id="Formula">
+        <button id="nueva">Generar nueva fórmula <img src="/src/frontend_medico/img/cruz.png" alt=""></button>
+        <button id="historial">Historial de fórmulas <img src="/src/frontend_medico/img/flechaconcir.png" alt=""></button>
+    </div>
+   
+    
+    
+
+    <script>
+        // Función para obtener el nombre del doctor de la URL
+        function getDoctorName() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('nombre');
+        }
+        function getDoctorID() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+
+
+        // Función para obtener el nombre del paciente de la URL
+        function getPatientName() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('paciente');
+        }
+
+        // Obtener el nombre del doctor y del paciente
+        const doctorName = getDoctorName();
+        const patientName = getPatientName();
+        const doctorID = getDoctorID();
+
+        // Mostrar el nombre del paciente en el contenedor
+        const patientNameContainer = document.getElementById('patientNameContainer');
+        if (patientName) {
+            patientNameContainer.textContent = `Paciente:  ${patientName}`;
+        } 
+        
+
+        // Manejar el clic en el botón "Atrás"
+        document.getElementById('back').addEventListener('click', function() {
+            window.location.href = `/recibidor/doctor?id=${doctorID}&nombre=${doctorName}`;
+        });
+    </script>
+  
+    <script src="../../index.js"></script>
+</body>
+</html>
