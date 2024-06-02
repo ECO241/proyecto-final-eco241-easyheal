@@ -23,9 +23,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       console.error('Error al obtener los datos del médico:', error);
     }
   
-    // Event listener para el botón de entrada (opcional)
+    // Event listener para el botón de entrada
     document.getElementById('seleccionar-doc').addEventListener('click', () => {
-      // Aquí puedes añadir la lógica para redirigir a otra página si es necesario
+      // Redirigir a la pantalla de médicos manteniendo los parámetros del médico
+      const urlParams = new URLSearchParams(window.location.search);
+      const nombreMedico = urlParams.get('medico');
+      const idMedico = urlParams.get('id');
+      window.location.href = `http://localhost:3000/medicoss?medico=${encodeURIComponent(nombreMedico)}&id=${encodeURIComponent(idMedico)}`;
     });
   });
-  
