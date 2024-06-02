@@ -15,7 +15,7 @@ const displayPacientes = async () => {
         pacienteElement.addEventListener('click', () => {
           const nombre = paciente.nombre.replace(/ /g, '_');
           const id = paciente.id;
-          window.location.href = `medicoss/${encodeURIComponent(nombre)}&${encodeURIComponent(id)}`;
+          window.location.href = `medicoss/paciente=${encodeURIComponent(nombre)}&id=${encodeURIComponent(id)}`;
         });
         
         pacientesList.appendChild(pacienteElement);

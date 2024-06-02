@@ -35,8 +35,10 @@ app.get('/medicoss/:nombre', (req, res) => {
   res.sendFile(path.join(staticPath, 'screens', 'paciente_detalle.html'));
 });
 
-
-
+// Ruta dinamica entrada docs
+app.get('/entrada', (req, res) => {
+  res.sendFile(path.join(staticPath, 'screens', 'entrada.html'));
+});
 
 // Enrutamientos
 app.use('/Farmacos', routerFarmacos);

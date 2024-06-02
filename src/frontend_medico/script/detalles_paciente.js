@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const pathname = window.location.pathname;
   const parts = pathname.split('/');
   const params = parts[parts.length - 1].split('&');
-  const nombre = params[0].replace(/_/g, ' ');
+  const nombreParam = params[0].replace(/_/g, ' ');
+  const nombre = nombreParam.split('=')[1]; // Extraer solo el nombre sin el prefijo "paciente="
   const id = params[1];
   document.getElementById('paciente-nombre').textContent = nombre;
 
