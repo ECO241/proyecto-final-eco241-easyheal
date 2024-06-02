@@ -22,7 +22,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Event listener para el botón de crear fórmula
   document.getElementById('crear-formula').addEventListener('click', () => {
-    window.location.href = `http://localhost:3000/farmacoss?paciente=${encodeURIComponent(nombre)}&id=${encodeURIComponent(id)}`;
+    const medicoNombre = params[2].split('=')[1];
+    const medicoId = params[3].split('=')[1];
+    window.location.href = `http://localhost:3000/farmacoss?paciente=${encodeURIComponent(nombre)}&id=${encodeURIComponent(id)}&medico=${encodeURIComponent(medicoNombre)}&id=${encodeURIComponent(medicoId)}`;
   });
 
   // Event listener para el botón de ver historial de fórmulas

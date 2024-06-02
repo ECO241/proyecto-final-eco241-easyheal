@@ -13,9 +13,13 @@ const displayPacientes = async () => {
         pacienteElement.textContent = paciente.nombre;
         pacienteElement.style.cursor = 'pointer';
         pacienteElement.addEventListener('click', () => {
-          const nombre = paciente.nombre.replace(/ /g, '_');
-          const id = paciente.id;
-          window.location.href = `medicoss/paciente=${encodeURIComponent(nombre)}&id=${encodeURIComponent(id)}`;
+          const nombrePaciente = paciente.nombre.replace(/ /g, '_');
+          const idPaciente = paciente.id;
+          const urlParams = new URLSearchParams(window.location.search);
+          const medicoNombre = urlParams.get('medico');
+          const medicoId = urlParams.get('id');
+          const newUrl = `medicoss/paciente=${encodeURIComponent(nombrePaciente)}&id=${encodeURIComponent(idPaciente)}&medico=${encodeURIComponent(medicoNombre)}&id=${encodeURIComponent(medicoId)}`;
+          window.location.href = newUrl;
         });
         
         pacientesList.appendChild(pacienteElement);
