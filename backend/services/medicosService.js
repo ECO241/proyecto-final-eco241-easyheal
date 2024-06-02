@@ -9,29 +9,5 @@ const supabaseKey =
 
 
 // Create a new Supabase client
-const supabase = createClient(supabaseUrl, supabaseKey);
 
-const PacientesService = {
-  getAllPacientes: async () => {
-    const { data, error } = await supabase
-        .from("pacientes")
-        .select();
-    if (error) {
-        throw new Error(error.message);
-    }
-    return data;
-  },
 
-  getPacientesById: async () => {
-    const { data, error } = await supabase
-        .from("pacientes")
-        .select()
-        .eq('id', id);
-    if (error) {
-        throw new Error(error.message);
-    }
-    return data;
-  },
-};
-
-export default PacientesService;

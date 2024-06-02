@@ -4,11 +4,9 @@ const routerPacientes = express.Router();
 import pacientesController from '../controllers/pacientesController.js';
 
 
-// Ruta para registrar un paciente
-routerPacientes.post('/registrar', pacientesController.registrarPaciente);
+// Traer pacientes con el pacientes controller
 
-// Ruta para iniciar sesión de un paciente
-routerPacientes.post('/login', pacientesController.loginPaciente);
+routerPacientes.get('/', pacientesController.getAllPacientes)
 
 
 export default routerPacientes;
