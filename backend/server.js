@@ -6,6 +6,7 @@ import { dirname } from 'path';
 
 const app = express();
 
+import routerPacientes from './routes/pacientesRouter.js';
 import routerFarmacos from './routes/farmacosRouter.js';
 import routerFormulas from './routes/formulasRouter.js';
 import routerMedicos from './routes/medicosRouter.js';
@@ -34,13 +35,16 @@ app.get('/medicoss/:nombre', (req, res) => {
   res.sendFile(path.join(staticPath, 'screens', 'paciente_detalle.html'));
 });
 
-
-
+// Ruta dinamica entrada docs
+app.get('/entrada', (req, res) => {
+  res.sendFile(path.join(staticPath, 'screens', 'entrada.html'));
+});
 
 // Enrutamientos
 app.use('/Farmacos', routerFarmacos);
 app.use('/Formulas', routerFormulas);
 app.use('/Medicos', routerMedicos);
+app.use('/Pacientes', routerPacientes)
 
 const port = 3000;
 

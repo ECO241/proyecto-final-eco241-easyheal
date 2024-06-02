@@ -6,8 +6,7 @@ class Medicamento extends HTMLElement {
   
     connectedCallback() {
       const nombre = this.getAttribute('nombre');
-      const tipo = this.getAttribute('tipo');
-      const precio_unitario = this.getAttribute('precio_unitario');
+      
   
       this.shadowRoot.innerHTML = `
         <style>
@@ -26,9 +25,7 @@ class Medicamento extends HTMLElement {
           }
         </style>
         <div class="medicamento">
-          <h2>${nombre}</h2>
-          <p>Tipo: ${tipo}</p>
-          <p>Precio Unitario: ${precio_unitario}</p>
+          <h2>${nombre}</h2>          
           <button id="add-to-cart">Agregar a la formula</button>
         </div>
       `;
@@ -36,9 +33,7 @@ class Medicamento extends HTMLElement {
       this.shadowRoot.querySelector('#add-to-cart').addEventListener('click', () => {
         const event = new CustomEvent('add-to-cart', {
           detail: {
-            nombre,
-            tipo,
-            precio_unitario,
+            nombre,            
           }
         });
         this.dispatchEvent(event);

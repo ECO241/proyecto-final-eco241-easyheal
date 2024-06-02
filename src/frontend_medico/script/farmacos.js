@@ -15,11 +15,13 @@ const displayMedicamentos = async () => {
       medicamentos.forEach(medicamento => {
         const medicamentoElement = document.createElement('mi-medicamento');
         medicamentoElement.setAttribute('nombre', medicamento.nombre);
-        medicamentoElement.setAttribute('tipo', medicamento.tipo);
-        medicamentoElement.setAttribute('precio_unitario', medicamento.precio_unitario);
+        medicamentoElement.setAttribute('id', medicamento.id); // Agregar el ID al componente
 
         medicamentoElement.addEventListener('add-to-cart', (e) => {
-          carrito.push(e.detail);
+          const id = e.target.getAttribute('id'); // Obtener el ID del medicamento
+          const nombre = e.detail.nombre;
+          console.log(`Se agregó al carrito el medicamento -> ID: ${id}, Nombre: ${nombre}`);
+          carrito.push({ id, nombre }); // Agregar el ID al carrito
           actualizarCarrito();
         });
 
@@ -38,7 +40,7 @@ const actualizarCarrito = () => {
   carritoList.innerHTML = '';
   carrito.forEach((item, index) => {
     const listItem = document.createElement('li');
-    listItem.textContent = `${item.nombre} - ${item.tipo} - ${item.precio_unitario}`;
+    listItem.textContent = `Nombre: ${item.nombre}`; // Mostrar solo el nombre en el carrito
     carritoList.appendChild(listItem);
   });
 };
@@ -70,3 +72,4 @@ window.onload = () => {
 
   document.getElementById('enviar-pedido').addEventListener('click', enviarPedido);
 };
+
