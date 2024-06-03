@@ -59,20 +59,39 @@ const actualizarCarrito = () => {
 
 const enviarPedido = async () => {
   try {
-    const response = await fetch('http://localhost:3000/pedido', {
+    // Obtener los parámetros de la URL actual
+    const urlParams = new URLSearchParams(window.location.search);
+    const pacienteId = urlParams.getAll('id')[0]; // Obtener el primer valor de 'id' (correspondiente a 'paciente')
+    const medicoId = urlParams.getAll('id')[1]; // Obtener el segundo valor de 'id' (correspondiente a 'medico')
+    
+    // Preparar los datos a enviar en el cuerpo del POST
+    const datosPedido = {
+      pacienteId,
+      medicoId,
+      items: carrito.map(item => ({ medicamentoId: item.id, cantidad: item.cantidad }))
+    };
+
+    // Mostrar el objeto que se enviará en el cuerpo del POST
+    console.log('Datos a enviar:', datosPedido);
+
+    const response = await fetch('http://localhost:3000/Formulas', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: JSON.stringify({ items: carrito }),
+      body: JSON.stringify(datosPedido),
     });
-    const result = await response.json();
-    if (result.success) {
+
+    // Mostrar la respuesta en consola
+    response.json()
+      .then((json) => console.log('Respuesta del servidor:', json));
+
+    if (response.ok) {
       alert('Pedido enviado con éxito');
       carrito = [];
       actualizarCarrito();
     } else {
-      console.error('Error al enviar el pedido:', result.error);
+      console.error('Error al enviar el pedido:', response.statusText);
     }
   } catch (error) {
     console.error('Error al enviar el pedido:', error);
@@ -83,16 +102,10 @@ window.onload = () => {
   displayMedicamentos();
 
   document.getElementById('enviar-pedido').addEventListener('click', enviarPedido);
-
-  // Obtener los parámetros de la URL actual
-  const urlParams = new URLSearchParams(window.location.search);
-  const pacienteNombre = urlParams.get('paciente');
-  const pacienteId = urlParams.get('id');
-  const medicoNombre = urlParams.get('medico');
-  const medicoId = urlParams.get('id');
-
- 
 };
+
+
+
 
 
 
