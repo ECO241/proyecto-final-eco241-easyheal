@@ -16,12 +16,23 @@ const displayMedicamentos = async () => {
         const medicamentoElement = document.createElement('mi-medicamento');
         medicamentoElement.setAttribute('nombre', medicamento.nombre);
         medicamentoElement.setAttribute('id', medicamento.id); // Agregar el ID al componente
+        medicamentoElement.setAttribute('cantidad', medicamento.cantidad); // Agregar la cantidad al componente
 
         medicamentoElement.addEventListener('add-to-cart', (e) => {
           const id = e.target.getAttribute('id'); // Obtener el ID del medicamento
           const nombre = e.detail.nombre;
-          console.log(`Se agregó al carrito el medicamento -> ID: ${id}, Nombre: ${nombre}`);
-          carrito.push({ id, nombre }); // Agregar el ID al carrito
+          const cantidadDisponible = parseInt(e.target.getAttribute('cantidad')); // Obtener la cantidad disponible del medicamento
+          const medicamentoEnCarrito = carrito.find(item => item.id === id);
+          if (medicamentoEnCarrito) {
+            if (medicamentoEnCarrito.cantidad < cantidadDisponible) {
+              medicamentoEnCarrito.cantidad++;
+            } else {
+              console.warn(`No se puede agregar más ${nombre} al carrito. La cantidad máxima disponible es ${cantidadDisponible}`);
+              alert(`¡El medicamento ${nombre} ha alcanzado su cantidad máxima disponible en el stock!`);
+            }
+          } else {
+            carrito.push({ id, nombre, cantidad: 1 }); // Agregar el ID al carrito
+          }
           actualizarCarrito();
         });
 
@@ -40,7 +51,7 @@ const actualizarCarrito = () => {
   carritoList.innerHTML = '';
   carrito.forEach((item, index) => {
     const listItem = document.createElement('li');
-    listItem.textContent = `Nombre: ${item.nombre}`; // Mostrar solo el nombre en el carrito
+    listItem.textContent = `Nombre: ${item.nombre}, Cantidad: ${item.cantidad}`; // Mostrar solo el nombre en el carrito
     carritoList.appendChild(listItem);
   });
 };
@@ -72,4 +83,5 @@ window.onload = () => {
 
   document.getElementById('enviar-pedido').addEventListener('click', enviarPedido);
 };
+
 
