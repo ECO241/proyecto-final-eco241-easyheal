@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fármacos</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Fármacos</h1>
+    <ul id="medicamentos-list"></ul>
+  
+    <div class="table.container">
+      <h2>Fórmula</h2>
+      <ul id="carrito-list"></ul>
+      <button id="enviar-pedido">Generar fórmula</button>
+    </div>
+  </div>
+
+<style>
+
+  body{
+    background-color: #f4f4f5;
+  }
+  
+  #medicamentos-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+ #medicamentos-list{
+    font-size: 18px;
+    color: #001b26;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FAFAFA;
+    transition: background-color 0.3s;
+  }
+  
+  h1{
+    font-family: Satoshi;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 43px;
+    text-align: center;
+    
+    color: #001b26;
+  }
+
+  h2{
+    font-family: Satoshi;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: left;
+    color: #001b26;
+    margin-left: 100px;
+  }
+
+  button{
+    width: 452px;
+    height: 46px;
+    border: 1.5px solid #001b26;
+    border-radius: 10px;
+    font-family: Satoshi;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #001b26;
+    margin-left: 100px;
+  }
+
+  #carrito-list{
+    margin-top: 20px;
+    border-style: none;
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    font-family: Satoshi;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 45px;
+    text-align: left;
+    color: #001b26;
+    border: 1px solid #04bf8a;
+    border-radius: 21px;
+    width: 550px;
+    margin-left: 100px;
+  }
+
+  #carrito-list li {
+    display: flex;
+    padding: 8px;
+    border-bottom: 1px solid #04bf8a;
+  }
+
+  #carrito-list li:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  #carrito-list li:nth-child(odd) {
+    background-color: #fff;
+  }
+
+  #carrito-list li.header {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  #carrito-list li div {
+    flex: 1;
+    padding: 8px;
+    text-align: left;
+  }
+</style>
+<script type="module" src="../Components/farmacos.js"></script>
+<script type="module" src="../script/farmacos.js"></script>
+
+
+</body>
+</html>
