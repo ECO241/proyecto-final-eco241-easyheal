@@ -21,6 +21,7 @@ const displayMedicamentos = async () => {
         medicamentoElement.addEventListener('add-to-cart', (e) => {
           const id = e.target.getAttribute('id'); // Obtener el ID del medicamento
           const nombre = e.detail.nombre;
+          console.log(`Se agregó al carrito el medicamento -> ID: ${id}, Nombre: ${nombre}`); // Mostrar en consola
           const cantidadDisponible = parseInt(e.target.getAttribute('cantidad')); // Obtener la cantidad disponible del medicamento
           const medicamentoEnCarrito = carrito.find(item => item.id === id);
           if (medicamentoEnCarrito) {
@@ -82,6 +83,16 @@ window.onload = () => {
   displayMedicamentos();
 
   document.getElementById('enviar-pedido').addEventListener('click', enviarPedido);
+
+  // Obtener los parámetros de la URL actual
+  const urlParams = new URLSearchParams(window.location.search);
+  const pacienteNombre = urlParams.get('paciente');
+  const pacienteId = urlParams.get('id');
+  const medicoNombre = urlParams.get('medico');
+  const medicoId = urlParams.get('id');
+
+ 
 };
+
 
 
