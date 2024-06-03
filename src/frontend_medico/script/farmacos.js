@@ -16,12 +16,24 @@ const displayMedicamentos = async () => {
         const medicamentoElement = document.createElement('mi-medicamento');
         medicamentoElement.setAttribute('nombre', medicamento.nombre);
         medicamentoElement.setAttribute('id', medicamento.id); // Agregar el ID al componente
+        medicamentoElement.setAttribute('cantidad', medicamento.cantidad); // Agregar la cantidad al componente
 
         medicamentoElement.addEventListener('add-to-cart', (e) => {
           const id = e.target.getAttribute('id'); // Obtener el ID del medicamento
           const nombre = e.detail.nombre;
-          console.log(`Se agregó al carrito el medicamento -> ID: ${id}, Nombre: ${nombre}`);
-          carrito.push({ id, nombre }); // Agregar el ID al carrito
+          console.log(`Se agregó al carrito el medicamento -> ID: ${id}, Nombre: ${nombre}`); // Mostrar en consola
+          const cantidadDisponible = parseInt(e.target.getAttribute('cantidad')); // Obtener la cantidad disponible del medicamento
+          const medicamentoEnCarrito = carrito.find(item => item.id === id);
+          if (medicamentoEnCarrito) {
+            if (medicamentoEnCarrito.cantidad < cantidadDisponible) {
+              medicamentoEnCarrito.cantidad++;
+            } else {
+              console.warn(`No se puede agregar más ${nombre} al carrito. La cantidad máxima disponible es ${cantidadDisponible}`);
+              alert(`¡El medicamento ${nombre} ha alcanzado su cantidad máxima disponible en el stock!`);
+            }
+          } else {
+            carrito.push({ id, nombre, cantidad: 1 }); // Agregar el ID al carrito
+          }
           actualizarCarrito();
         });
 
@@ -40,27 +52,46 @@ const actualizarCarrito = () => {
   carritoList.innerHTML = '';
   carrito.forEach((item, index) => {
     const listItem = document.createElement('li');
-    listItem.textContent = `Nombre: ${item.nombre}`; // Mostrar solo el nombre en el carrito
+    listItem.textContent = `Nombre: ${item.nombre}, Cantidad: ${item.cantidad}`; // Mostrar solo el nombre en el carrito
     carritoList.appendChild(listItem);
   });
 };
 
 const enviarPedido = async () => {
   try {
-    const response = await fetch('http://localhost:3000/pedido', {
+    // Obtener los parámetros de la URL actual
+    const urlParams = new URLSearchParams(window.location.search);
+    const pacienteId = urlParams.getAll('id')[0]; // Obtener el primer valor de 'id' (correspondiente a 'paciente')
+    const medicoId = urlParams.getAll('id')[1]; // Obtener el segundo valor de 'id' (correspondiente a 'medico')
+    
+    // Preparar los datos a enviar en el cuerpo del POST
+    const datosPedido = {
+      pacienteId,
+      medicoId,
+      items: carrito.map(item => ({ medicamentoId: item.id, cantidad: item.cantidad }))
+    };
+
+    // Mostrar el objeto que se enviará en el cuerpo del POST
+    console.log('Datos a enviar:', datosPedido);
+
+    const response = await fetch('http://localhost:3000/Formulas', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: JSON.stringify({ items: carrito }),
+      body: JSON.stringify(datosPedido),
     });
-    const result = await response.json();
-    if (result.success) {
+
+    // Mostrar la respuesta en consola
+    response.json()
+      .then((json) => console.log('Respuesta del servidor:', json));
+
+    if (response.ok) {
       alert('Pedido enviado con éxito');
       carrito = [];
       actualizarCarrito();
     } else {
-      console.error('Error al enviar el pedido:', result.error);
+      console.error('Error al enviar el pedido:', response.statusText);
     }
   } catch (error) {
     console.error('Error al enviar el pedido:', error);
@@ -72,4 +103,16 @@ window.onload = () => {
 
   document.getElementById('enviar-pedido').addEventListener('click', enviarPedido);
 };
+
+
+  document.getElementById('back').addEventListener('click', () => {
+    window.history.back();
+  });
+  
+  document.getElementById('next').addEventListener('click', () => {
+    window.location.href = 'http://localhost:3000/entrada?medico=Luis_Tobar&id=f5a95abc-e4bc-4c1c-a590-e5d6e9b9c5f0';
+  });
+  
+
+
 

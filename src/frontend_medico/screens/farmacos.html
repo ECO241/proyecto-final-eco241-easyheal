@@ -6,62 +6,130 @@
   <title>Fármacos</title>
 </head>
 <body>
-  <div class="container">
+  <div id="farmacos">
+    <button id="back"><img src="../img/atras.png" alt=""></button>
+    <button id="next"><img src="../img/salir.png" alt=""></button>
     <h1>Fármacos</h1>
-    <ul id="medicamentos-list"></ul>
-  
-    <div class="table.container">
-      <h2>Fórmula</h2>
+  </div>
+  <div class="search-bar">
+    <input id="buscador" type="text" placeholder="Buscar fármacos">
+  </div>
+
+  <div class="container">
+    <div>
+      <ul id="medicamentos-list"></ul>
+    </div>
+    <div class="table-container">
+      <h3>Fórmula</h3>
       <ul id="carrito-list"></ul>
       <button id="enviar-pedido">Generar fórmula</button>
     </div>
   </div>
+<script type="module" src="../Components/farmacos.js"></script>
+<script type="module" src="../script/farmacos.js"></script>
+<script type="module" src="../script/barraBusqueda.js"></script>
 
 <style>
-
-  body{
+   body {
     background-color: #f4f4f5;
+    font-family: Satoshi, sans-serif;
+    margin: 0;
+    position: relative;
   }
-  
+
+  #farmacos {
+    position: relative;
+  }
+
+  .table-container{
+    margin-top: -75px;
+  }
+  #buscador {
+    width: 700px;
+    height: 30px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 24px;
+    font-family: Satoshi, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #D3D3D3;
+    border: transparent;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 150px; 
+  }
+
+  #next,
+  #back {
+    position: absolute;
+    top: 10px;
+    border: none; 
+    background-color: transparent;
+  }
+
+  #back {
+    left: -180px; 
+    top: -5px
+  }
+
+  #next {
+    right: -170px; 
+    top:-5px;
+    
+  }
+
+  #next img{
+    width: 50px;
+    
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+  }
+
   #medicamentos-list {
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
- #medicamentos-list{
+  #medicamentos-list {
     font-size: 18px;
     color: #001b26;
     justify-content: space-between;
     align-items: center;
-    background-color: #FAFAFA;
     transition: background-color 0.3s;
   }
-  
-  h1{
+
+  h1 {
     font-family: Satoshi;
     font-style: normal;
     font-weight: 900;
     font-size: 32px;
     line-height: 43px;
     text-align: center;
-    
     color: #001b26;
   }
 
-  h2{
+  h3 {
     font-family: Satoshi;
     font-style: normal;
-    font-weight: 700;
     font-size: 24px;
     line-height: 32px;
-    text-align: left;
     color: #001b26;
-    margin-left: 100px;
+    margin-left: 220px;
+    
   }
 
-  button{
-    width: 452px;
+  button {
+    width: 450px;
     height: 46px;
     border: 1.5px solid #001b26;
     border-radius: 10px;
@@ -72,15 +140,14 @@
     line-height: 24px;
     text-align: center;
     color: #001b26;
-    margin-left: 100px;
+    margin-left: 50px;
+    cursor: pointer;
   }
 
-  #carrito-list{
-    margin-top: 20px;
+  #carrito-list {
     border-style: none;
     border-radius: 4px;
     padding: 10px;
-    background-color: #f9f9f9;
     font-family: Satoshi;
     font-style: normal;
     font-weight: 400;
@@ -90,8 +157,9 @@
     color: #001b26;
     border: 1px solid #04bf8a;
     border-radius: 21px;
-    width: 550px;
-    margin-left: 100px;
+    width: 420px;
+    margin-left: 50px;
+
   }
 
   #carrito-list li {
@@ -119,10 +187,7 @@
     padding: 8px;
     text-align: left;
   }
+
 </style>
-<script type="module" src="../Components/farmacos.js"></script>
-<script type="module" src="../script/farmacos.js"></script>
-
-
 </body>
 </html>
