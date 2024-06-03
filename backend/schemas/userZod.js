@@ -2,7 +2,7 @@
 
 // const esquemaUsuario = z.object({
 //     nombre: z.string(),
-//     correo: z.string().email(), 
+//     correo: z.string().email(),
 //     contraseña: z.string(),
 //     tipoUsuario: z.string(),
 // });

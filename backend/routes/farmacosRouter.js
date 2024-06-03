@@ -3,7 +3,7 @@ const routerFarmacos = express.Router();
 
 // Importar controlador de farmacos
 
-import farmacosController from "../controllers/farmacoscontroller.js";
+import farmacosController from "../controllers/farmacosController.js";
 
 
 // Traer todas los farmacos

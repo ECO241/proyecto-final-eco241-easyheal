@@ -9,4 +9,3 @@ const esquemaMedicamento = z.object({
 });
 
 export {esquemaMedicamento}
-

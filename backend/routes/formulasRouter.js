@@ -15,8 +15,3 @@ routerFormulas.post('/', formulasController.createFormula);
 
 
 export default routerFormulas;
-
-
-
-
-

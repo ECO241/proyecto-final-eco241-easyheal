@@ -1,4 +1,4 @@
-import '../Components/farmacos.js';
+import '../Components/medicamentos.js';
 
 let carrito = [];
 

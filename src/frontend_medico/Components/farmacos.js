@@ -3,12 +3,12 @@ class Medicamento extends HTMLElement {
       super();
       this.attachShadow({ mode: 'open' });
     }
-  
+
     connectedCallback() {
       const nombre = this.getAttribute('nombre');
       const tipo = this.getAttribute('tipo');
       const precio_unitario = this.getAttribute('precio_unitario');
-  
+
       this.shadowRoot.innerHTML = `
         <style>
           .medicamento {
@@ -24,6 +24,10 @@ class Medicamento extends HTMLElement {
           .medicamento button {
             margin-top: 10px;
           }
+
+          .filtro{
+            display: none;
+          }
         </style>
         <div class="medicamento">
           <h2>${nombre}</h2>
@@ -32,7 +36,7 @@ class Medicamento extends HTMLElement {
           <button id="add-to-cart">Agregar a la formula</button>
         </div>
       `;
-  
+
       this.shadowRoot.querySelector('#add-to-cart').addEventListener('click', () => {
         const event = new CustomEvent('add-to-cart', {
           detail: {
@@ -45,6 +49,5 @@ class Medicamento extends HTMLElement {
       });
     }
   }
-  
+
   customElements.define('mi-medicamento', Medicamento);
-  

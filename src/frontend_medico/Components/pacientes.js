@@ -3,11 +3,11 @@ class Pacientes extends HTMLElement {
       super();
       this.attachShadow({ mode: 'open' });
     }
-  
+
     connectedCallback() {
       const nombre = this.getAttribute('nombre');
-    
-  
+
+
       this.shadowRoot.innerHTML = `
         <style>
           .pacientes {
@@ -20,17 +20,16 @@ class Pacientes extends HTMLElement {
             margin: 0;
             font-size: 1.2em;
           }
-          
+
         </style>
         <div class="pacientes">
           <h2>${nombre}</h2>
-    
+
         </div>
       `;
-  
+
      ;
     }
   }
-  
+
   customElements.define('mi-paciente', Pacientes);
-  
