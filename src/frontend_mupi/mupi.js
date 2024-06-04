@@ -1,80 +1,44 @@
-//crea elemento
-const video = document.createElement("video");
+const contenedorPrincipal = document.getElementById("contenedorPrincipal")
 
-//nuestro camvas
-const canvasElement = document.getElementById("qr-canvas");
-const canvas = canvasElement.getContext("2d");
+const video = document.createElement("video")
 
-//div donde llegara nuestro canvas
-const btnScanQR = document.getElementById("btn-scan-qr");
+const canvasElement = document.createElement("canvas")
+contenedorPrincipal.appendChild(canvasElement)
 
-//lectura desactivada
-let scanning = false;
+const canvas = canvasElement.getContext("2d")
 
-//funcion para encender la camara
-const encenderCamara = () => {
-  navigator.mediaDevices
-    .getUserMedia({ video: { facingMode: "environment" } })
-    .then(function (stream) {
-      scanning = true;
-      btnScanQR.hidden = true;
-      canvasElement.hidden = false;
-      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-      video.srcObject = stream;
-      video.play();
-      tick();
-      scan();
-    });
-};
+window.addEventListener('load', () => {
+    encenderCamara()
+})
 
-//funciones para levantar las funiones de encendido de la camara
+function encenderCamara() {
+    navigator.mediaDevices
+        .getUserMedia({ video: { facingMode: "environment" } })
+        .then((stream) => {
+            console.log("Hola")
+            video.setAttribute("playsinline", true)
+            video.srcObject = stream
+            video.play()
+
+            tick()
+        })
+}
+
 function tick() {
-  canvasElement.height = video.videoHeight;
-  canvasElement.width = video.videoWidth;
-  canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+    canvasElement.height = video.videoHeight;
+    canvasElement.width = video.videoWidth;
 
-  scanning && requestAnimationFrame(tick);
+    if (canvasElement.height !== 0) {
+        canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height)
+
+        const imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+        const code = jsQR(imageData.data, imageData.width, imageData.height, {
+            inversionAttempts: "dontInvert",
+        });
+        if (code) {
+            console.log(code.data)
+        }
+    }
+
+    requestAnimationFrame(tick)
 }
-
-function scan() {
-  try {
-    qrcode.decode();
-  } catch (e) {
-    setTimeout(scan, 300);
-  }
-}
-
-//apagara la camara
-const cerrarCamara = () => {
-  video.srcObject.getTracks().forEach((track) => {
-    track.stop();
-  });
-  canvasElement.hidden = true;
-  btnScanQR.hidden = false;
-};
-
-const activarSonido = () => {
-  var audio = document.getElementById('audioScaner');
-  audio.play();
-}
-
-//callback cuando termina de leer el codigo QR
-qrcode.callback = (respuesta) => {
-  if (respuesta) {
-    //console.log(respuesta);
-    Swal.fire(respuesta)
-    activarSonido();
-    //encenderCamara();    
-    cerrarCamara();    
-
-  }
-};
-//evento para mostrar la camara sin el boton 
-//window.addEventListener('load', (e) => {
-  //encenderCamara();
-//})
-
-
-
-
-
