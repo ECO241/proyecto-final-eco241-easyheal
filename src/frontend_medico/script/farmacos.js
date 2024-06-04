@@ -20,7 +20,9 @@ const displayMedicamentos = async () => {
 
         medicamentoElement.addEventListener('add-to-cart', (e) => {
           const id = e.target.getAttribute('id'); // Obtener el ID del medicamento
-          const nombre = e.detail.nombre;
+          let nombre = e.detail.nombre;
+          // Limpiar el nombre del medicamento
+          nombre = nombre.replace(/\n/g, '').trim();
           console.log(`Se agregó al carrito el medicamento -> ID: ${id}, Nombre: ${nombre}`); // Mostrar en consola
           const cantidadDisponible = parseInt(e.target.getAttribute('cantidad')); // Obtener la cantidad disponible del medicamento
           const medicamentoEnCarrito = carrito.find(item => item.id === id);
@@ -68,7 +70,7 @@ const enviarPedido = async () => {
     const datosPedido = {
       pacienteId,
       medicoId,
-      items: carrito.map(item => ({ medicamentoId: item.id, cantidad: item.cantidad }))
+      items: carrito.map(item => ({ medicamentoId: item.id, nombre: item.nombre.replace(/\n/g, '').trim(), cantidad: item.cantidad })) // Limpiar el nombre del medicamento
     };
 
     // Mostrar el objeto que se enviará en el cuerpo del POST
@@ -103,6 +105,9 @@ window.onload = () => {
 
   document.getElementById('enviar-pedido').addEventListener('click', enviarPedido);
 };
+
+
+
 
 
 

@@ -23,7 +23,8 @@ const formulasController = {
   },
   createFormula: async (req, res) => {
     try{
-      await formulasService.createFormula(req.body);
+      console.log(req.body)
+      await formulasService.createFormula(req.body.medicoId, req.body.pacienteId, req.body.items);
       res.json({ success: true, message: "Formulada creada correctamente", });
     } catch (error) {
       console.error("Error al crear formula in supabase", error.message);

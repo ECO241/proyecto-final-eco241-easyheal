@@ -33,18 +33,18 @@ const formulasService = {
     return data;
   },
 
-  createFormula: async (id, idMedicos, idPaciente, medicamentos) => {
+  createFormula: async (idMedicos, idPaciente, medicamentos) => {
     try {
-      const { error } = await supabase
+      const { error, data } = await supabase
         .from("formulas")
         .insert({
-        id: 1,
-        idMedicos: "Denmark",
-        idPaciente: "",
-        medicamentos: [{
-
-        }],
-      });
+        paciente_id: idPaciente,        
+        doctor_id: idMedicos,
+        medicamentos: medicamentos,        
+        })
+        .select()
+        console.log(error)        
+        
     } catch (error) {
       throw new Error(error.message);
     }
