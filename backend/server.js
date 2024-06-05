@@ -34,9 +34,6 @@ app.get('/medicoss/:nombre', (req, res) => {
   res.sendFile(path.join(staticPath, 'screens', 'paciente_detalle.html'));
 });
 
-
-
-
 // Enrutamientos
 app.use('/Farmacos', routerFarmacos);
 app.use('/Formulas', routerFormulas);
