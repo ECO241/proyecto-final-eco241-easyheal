@@ -37,6 +37,8 @@ function tick() {
         });
         if (code) {
             console.log(code.data)
+            // Redirigir a la URL del QR escaneado
+            window.location.href = code.data;
         }
     }
 
