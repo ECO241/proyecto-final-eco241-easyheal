@@ -3,6 +3,7 @@ import cors from 'cors';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { dirname } from 'path';
+import formulasController from './controllers/formulasController.js';
 
 const app = express();
 
@@ -35,7 +36,13 @@ app.get('/medicoss/:nombre', (req, res) => {
   res.sendFile(path.join(staticPath, 'screens', 'paciente_detalle.html'));
 });
 
-// Ruta dinamica entrada docs
+// Ruta para servir el archivo HTML que muestra el código QR
+app.get('/formulas/:id', (req, res) => {
+  res.sendFile(path.join(staticPath, 'screens', 'qr.html'));
+});
+
+
+// Ruta dinámica entrada docs
 app.get('/entrada', (req, res) => {
   res.sendFile(path.join(staticPath, 'screens', 'entrada.html'));
 });

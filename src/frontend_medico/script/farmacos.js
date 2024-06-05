@@ -20,7 +20,9 @@ const displayMedicamentos = async () => {
 
         medicamentoElement.addEventListener('add-to-cart', (e) => {
           const id = e.target.getAttribute('id'); // Obtener el ID del medicamento
-          const nombre = e.detail.nombre;
+          let nombre = e.detail.nombre;
+          // Limpiar el nombre del medicamento
+          nombre = nombre.replace(/\n/g, '').trim();
           console.log(`Se agregó al carrito el medicamento -> ID: ${id}, Nombre: ${nombre}`); // Mostrar en consola
           const cantidadDisponible = parseInt(e.target.getAttribute('cantidad')); // Obtener la cantidad disponible del medicamento
           const medicamentoEnCarrito = carrito.find(item => item.id === id);
@@ -68,13 +70,13 @@ const enviarPedido = async () => {
     const datosPedido = {
       pacienteId,
       medicoId,
-      items: carrito.map(item => ({ medicamentoId: item.id, cantidad: item.cantidad }))
+      items: carrito.map(item => ({ medicamentoId: item.id, nombre: item.nombre.replace(/\n/g, '').trim(), cantidad: item.cantidad })) // Limpiar el nombre del medicamento
     };
 
     // Mostrar el objeto que se enviará en el cuerpo del POST
     console.log('Datos a enviar:', datosPedido);
 
-    const response = await fetch('http://localhost:3000/Formulas', {
+    const response = await fetch('http://localhost:3000/formulas', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
@@ -83,13 +85,18 @@ const enviarPedido = async () => {
     });
 
     // Mostrar la respuesta en consola
-    response.json()
-      .then((json) => console.log('Respuesta del servidor:', json));
+    const json = await response.json();
+    console.log('Respuesta del servidor:', json);
 
     if (response.ok) {
       alert('Pedido enviado con éxito');
       carrito = [];
       actualizarCarrito();
+
+      const formulaId = json.formulaId; // Suponiendo que el servidor devuelve el ID de la fórmula recién creada
+
+      // Redirigir a la página de QR con el ID de la fórmula
+      window.location.href = `http://localhost:3000/formulas/${pacienteId}`;
     } else {
       console.error('Error al enviar el pedido:', response.statusText);
     }
@@ -103,8 +110,6 @@ window.onload = () => {
 
   document.getElementById('enviar-pedido').addEventListener('click', enviarPedido);
 };
-
-
   document.getElementById('back').addEventListener('click', () => {
     window.history.back();
   });
@@ -112,7 +117,6 @@ window.onload = () => {
   document.getElementById('next').addEventListener('click', () => {
     window.location.href = 'http://localhost:3000/entrada?medico=Luis_Tobar&id=f5a95abc-e4bc-4c1c-a590-e5d6e9b9c5f0';
   });
-  
 
 
 
