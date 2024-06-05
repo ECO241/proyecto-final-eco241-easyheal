@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial</title>
+</head>
+<body>
+
+    <div id="historial">
+        <button id="back"><img src="../img/atras.png" alt=""></button>
+        <button id="notifications"><img src="../img/notifications.png" alt=""></button>
+        <h1>Historial de Fórmulas</h1>
+    </div>
+
+    <div class="container.formulas">
+        <div>
+          <ul id="formulas-list"></ul>
+        </div>
+    </div>    
+
+    <style>
+        body {
+            background-color: #f4f4f5;
+            font-family: Satoshi, sans-serif;
+            margin: 0;
+            position: relative;
+        }
+
+        #historial {
+            position: relative;
+        }
+
+        #notifications,
+        #back {
+            position: absolute;
+            top: 10px;
+            border: none; 
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        #back {
+            top: -5px
+        }
+
+        #notifications {
+            right: 10px; 
+            top:-5px;
+            
+        }
+
+        #notifications img{
+            width: 50px;
+        }
+
+        h1 {
+            font-family: Satoshi;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 170%;
+            line-height: 43px;
+            text-align: center;
+            color: #001b26;
+        }
+    
+        @media (max-width: 400px) {
+            #back,
+            #notifications {
+                top: 5%;
+                width: 20%;
+                cursor: pointer;
+            }
+
+            #notifications img {
+                right: 5px; 
+                width: 60%;
+            }
+
+            #back img{
+                width: 60%;
+            }
+
+            h1 {
+                font-family: Satoshi;
+                font-style: normal;
+                font-weight: 900;
+                font-size: 115%;
+                line-height: 43px;
+                text-align: center;
+                color: #001b26;
+            }
+        }
+    </style>
+</body>
+</html>
