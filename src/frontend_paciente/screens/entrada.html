@@ -1,51 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrada</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrada</title>
 </head>
 <body>
-    <img id="logo" src="../img/Logo design_Mesa de trabajo 1 copia 6.png" alt="">
-    <script>
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        // Fetch para obtener la lista de pacientes
-        const response = await fetch('http://localhost:3000/pacientes');
-        const result = await response.json();
+  <img src="../img/Logo design_Mesa de trabajo 1 copia 6.png" alt="">
+  <h1 id="bienvenida-paciente"></h1>  
+  <button id="seleccionar-paciente">Entrar</button>
 
-        if (result.success) {
-            // Obtener el primer paciente de la lista (suponiendo que se devuelva solo uno)
-            const paciente = result.data[0];
-            const nombrePaciente = paciente.nombre.replace(/ /g, '_');
-            const idPaciente = paciente.id;
+<script type="module" src="../script/entradapaciente.js"></script>
 
-            // Presentar el nombre del paciente en el elemento h1
-            document.getElementById('bienvenida-pac').textContent = `Bienvenido ${paciente.nombre}`;
+<style>
+ body {
+    background-color: #f4f4f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Satoshi, sans-serif;
+  }
 
-            // Actualizar la URL con el nombre e id del paciente
-            const newUrl = `http://localhost:3000/entrada?paciente=${encodeURIComponent(nombrePaciente)}&id=${encodeURIComponent(idPaciente)}`;
-            window.history.replaceState(null, null, newUrl);
-        } else {
-            console.error('Error al obtener el paciente:', result.error);
-        }
-    } catch (error) {
-        console.error('Error al obtener los datos del paciente:', error);
+  h1 {
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 43px;
+    text-align: center;
+    color: #001b26;
+    margin-bottom: 20px;
+  }
+
+  button {
+    width: 200px;
+    height: 50px;
+    border: transparent;
+    border-radius: 10px;
+    background-color: #04bf8a;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  button:hover {
+    background-color: #03a97e;
+    transform: scale(1.05);
+  }
+  img{
+      width: 260px;
+      height: 260px;
+      margin-top: 40px;
+      margin-left: 1%;
     }
 
-    // Event listener para el botón de selección de paciente
-    document.getElementById('seleccionar-pac').addEventListener('click', () => {
-        // Redirigir a la pantalla de pacientes manteniendo los parámetros del paciente
-        const urlParams = new URLSearchParams(window.location.search);
-        const nombrePaciente = urlParams.get('paciente');
-        const idPaciente = urlParams.get('id');
-        window.location.href = `http://localhost:3000/pacientess?paciente=${encodeURIComponent(nombrePaciente)}&id=${encodeURIComponent(idPaciente)}`;
-    });
-});
-
-
-
-    </script>
+</style>
 </body>
 
 

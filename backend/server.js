@@ -56,13 +56,18 @@ app.get('/entrada', (req, res) => {
 });
 
 // Ruta dinámica entrada paciente
-app.get('/pacientes/entrada', (req, res) => {
+app.get('/entradapaciente', (req, res) => {
   res.sendFile(path.join(staticPaths, 'screens', 'entrada.html'));
 });
 
-// Ruta dinámica sobreapp paciente
-app.get('/pacientes/sobreapp', (req, res) => {
+// Ruta dinámica sobrelapp paciente
+app.get('/sobrelaapp', (req, res) => {
   res.sendFile(path.join(staticPaths, 'screens', 'sobrelaapp.html'));
+});
+
+// Ruta dinámica historial paciente
+app.get('/historialpaciente', (req, res) => {
+  res.sendFile(path.join(staticPaths, 'screens', 'historial.html'));
 });
 
 
