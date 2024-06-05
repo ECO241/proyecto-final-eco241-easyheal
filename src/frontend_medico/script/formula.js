@@ -15,14 +15,13 @@ const displayFormulas = async () => {
  const result = await response.json();
 
 
- 
+
     if (result.success) {
       const formulas = result.data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
       const formulaMasReciente = formulas[0];
 
       const formulaElement = document.createElement('mi-formula');
       formulaElement.setAttribute('qr_code', formulaMasReciente.qr_code);
-      formulaElement.setAttribute('paciente_id', formulaMasReciente.paciente_id);
       formulaElement.setAttribute('medicamentos', JSON.stringify(formulaMasReciente.medicamentos));
 
       const qrImg = document.createElement('img');

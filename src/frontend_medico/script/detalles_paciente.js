@@ -27,9 +27,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.location.href = `http://localhost:3000/farmacoss?paciente=${encodeURIComponent(nombreParam)}&id=${encodeURIComponent(id)}&medico=${encodeURIComponent(medicoNombre)}&id=${encodeURIComponent(medicoId)}`;
   });
 
-  // Event listener para el botón de ver historial de fórmulas
   document.getElementById('ver-historial').addEventListener('click', () => {
-    window.location.href = `http://localhost:3000/formulas/historial?paciente=${encodeURIComponent(nombreParam)}&id=${encodeURIComponent(id)}`;
+    const medicoNombre = params[2].split('=')[1];
+    const medicoId = params[3].split('=')[1];
+    window.location.href = `http://localhost:3000/formulass/historial?paciente=${encodeURIComponent(nombreParam)}&id=${encodeURIComponent(id)}&medico=${encodeURIComponent(medicoNombre)}&id=${encodeURIComponent(medicoId)}`;
   });
 
   document.getElementById('back').addEventListener('click', () => {

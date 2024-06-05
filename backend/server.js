@@ -41,6 +41,11 @@ app.get('/formulas/:id', (req, res) => {
   res.sendFile(path.join(staticPath, 'screens', 'medicoqr.html'));
 });
 
+// Ruta para servir el archivo HTML que muestra el Historial de formulas
+app.get('/formulass/historial', (req, res) => {
+  res.sendFile(path.join(staticPath, 'screens', 'paciente_detalle_historial.html'));
+});
+
 
 // Ruta dinámica entrada docs
 app.get('/entrada', (req, res) => {
