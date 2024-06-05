@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrada</title>
-</head>
-<body>
-    <img id="logo" src="../img/Logo design_Mesa de trabajo 1 copia 6.png" alt="">
-    <script>
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         // Fetch para obtener la lista de pacientes
@@ -42,11 +32,3 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location.href = `http://localhost:3000/pacientess?paciente=${encodeURIComponent(nombrePaciente)}&id=${encodeURIComponent(idPaciente)}`;
     });
 });
-
-
-
-    </script>
-</body>
-
-
-</html>

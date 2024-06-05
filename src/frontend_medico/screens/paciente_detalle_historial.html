@@ -3,23 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detalle del Paciente</title>
+  <title>Historial del Paciente</title>
 </head>
 <body>
 
   <div id="pacientes">
     <button id="back"><img src="../img/atras.png" alt=""></button>
-    <h2>Paciente</h2>
+    <h2>Historial de fórmulas</h2>
     <button id="next"><img src="../img/salir.png" alt=""></button>
   </div>
 
-  <h1 id="paciente-nombre"></h1>
-  <div id="paciente-detalles"></div>
+  <div id="historial-list"></div>
 
- <div id="Formula">
-  <button id="crear-formula">Generar nueva Fórmula <img  id= "imgcrear"src="../img/cruz.png" alt="imagen cruz salud "></button>
-  <button id="ver-historial">Ver Historial de Fórmulas <img id= "imghistorial"src="../img/flechaconcir.png" alt="imagen flecha"></button>
-  </div>
+
 
   <style>
     body{
@@ -116,9 +112,30 @@ h2{
   text-align: center;
   color: #001b26;
 }
+
+.formula-item {
+    border-style: none;
+    border-radius: 4px;
+    padding: 10px;
+    font-family: Satoshi;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 45px;
+    text-align: left;
+    color: #001b26;
+    border: 1px solid #04bf8a;
+    border-radius: 10px;
+    width: 1400px;
+    margin-left: 50px;
+margin-bottom: 20px;}
+    
+
+
 </style>
  
 
-<script type="module" src="../script/detalles_paciente.js"></script>
+<script type="module" src="../script/historial.js"></script> 
+<script type="module" src="../Components/historial.js"></script>
 </body>
 </html>
