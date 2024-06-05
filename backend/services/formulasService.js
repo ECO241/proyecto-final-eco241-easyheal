@@ -67,6 +67,10 @@ const formulasService = {
       throw new Error(error.message);
     }
   },
+  createQRLink: (formulaId, pacienteId) => {
+    const link = `http://tu-servidor.com/formula_mupiview.html?id_formula=${formulaId}&id_paciente=${pacienteId}`;
+    return link;
+  },
 
   createFormula: async (idMedicos, idPaciente, medicamentos) => {
     try {
@@ -88,8 +92,9 @@ const formulasService = {
         const formulaId = data[0].id;
   
         // Generate the QR code
-        const qrData = `Formula ID: ${formulaId}`;
+        const qrData = `Formula ID: ${formulaId}\nMedicamentos:\n${medicamentos.map(med => `Nombre: ${med.nombre}, Cantidad: ${med.cantidad}`).join('\n')}`;
         const qrCodeDataUrl = await QRCode.toDataURL(qrData);
+
   
         // Convert the Data URL to a Base64 string
         const base64Data = qrCodeDataUrl.split(",")[1];
@@ -104,11 +109,12 @@ const formulasService = {
           console.log(updateError);
           throw new Error(updateError.message);
         }
-  
+        const qrLink = formulasService.createQRLink(formulaId, idPaciente);
         return data;
       } catch (error) {
         throw new Error(error.message);
       }
+      
     }, 
     fetchFormulaWithQRCode: async (id) => {
       const { data, error } = await supabase

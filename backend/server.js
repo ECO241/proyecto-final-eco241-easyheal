@@ -25,6 +25,8 @@ app.use(express.static(staticPath));
 const staticPaths = path.join(__dirname, '..', 'src', 'frontend_paciente');
 app.use(express.static(staticPaths));
 
+const staticPathss = path.join(__dirname, '..', 'src', 'frontend_mupi');
+app.use(express.static(staticPathss));
 
 // Ruta para servir el archivo HTML
 app.get('/farmacoss', (req, res) => {
@@ -79,6 +81,12 @@ app.get('/detalleformula', (req, res) => {
 app.get('/notificaciones', (req, res) => {
   res.sendFile(path.join(staticPaths, 'screens', 'notificaciones.html'));
 });
+
+// Ruta dinámica iniciomupi
+app.get('/entradamupi', (req, res) => {
+  res.sendFile(path.join(staticPathss, 'screens', 'mupi.html'));
+});
+
 
 
 
