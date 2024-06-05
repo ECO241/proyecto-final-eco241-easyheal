@@ -41,6 +41,7 @@ class Medicamento extends HTMLElement {
         margin-top: 10px;
         background-color: #f4f4f5;
         margin-left: 190px; 
+        cursor: pointer;
       }
 
       #add-to-cart{
