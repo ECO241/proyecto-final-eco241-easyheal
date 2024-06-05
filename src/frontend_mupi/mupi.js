@@ -1,80 +1,43 @@
-//crea elemento
-const video = document.createElement("video");
+const contenedorPrincipal = document.getElementById("contenedorPrincipal");
+    const video = document.createElement("video");
+    const canvasElement = document.createElement("canvas");
+    contenedorPrincipal.appendChild(canvasElement);
+    const canvas = canvasElement.getContext("2d");
 
-//nuestro camvas
-const canvasElement = document.getElementById("qr-canvas");
-const canvas = canvasElement.getContext("2d");
-
-//div donde llegara nuestro canvas
-const btnScanQR = document.getElementById("btn-scan-qr");
-
-//lectura desactivada
-let scanning = false;
-
-//funcion para encender la camara
-const encenderCamara = () => {
-  navigator.mediaDevices
-    .getUserMedia({ video: { facingMode: "environment" } })
-    .then(function (stream) {
-      scanning = true;
-      btnScanQR.hidden = true;
-      canvasElement.hidden = false;
-      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-      video.srcObject = stream;
-      video.play();
-      tick();
-      scan();
+    window.addEventListener('load', () => {
+      encenderCamara();
     });
-};
 
-//funciones para levantar las funiones de encendido de la camara
-function tick() {
-  canvasElement.height = video.videoHeight;
-  canvasElement.width = video.videoWidth;
-  canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+    function encenderCamara() {
+      navigator.mediaDevices
+        .getUserMedia({ video: { facingMode: "environment" } })
+        .then((stream) => {
+          console.log("Hola");
+          video.setAttribute("playsinline", true);
+          video.srcObject = stream;
+          video.play();
 
-  scanning && requestAnimationFrame(tick);
-}
+          tick();
+        });
+    }
 
-function scan() {
-  try {
-    qrcode.decode();
-  } catch (e) {
-    setTimeout(scan, 300);
-  }
-}
+    function tick() {
+      canvasElement.height = video.videoHeight;
+      canvasElement.width = video.videoWidth;
 
-//apagara la camara
-const cerrarCamara = () => {
-  video.srcObject.getTracks().forEach((track) => {
-    track.stop();
-  });
-  canvasElement.hidden = true;
-  btnScanQR.hidden = false;
-};
+      if (canvasElement.height !== 0) {
+        canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
 
-const activarSonido = () => {
-  var audio = document.getElementById('audioScaner');
-  audio.play();
-}
+        const imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+        const code = jsQR(imageData.data, imageData.width, imageData.height, {
+          inversionAttempts: "dontInvert",
+        });
 
-//callback cuando termina de leer el codigo QR
-qrcode.callback = (respuesta) => {
-  if (respuesta) {
-    //console.log(respuesta);
-    Swal.fire(respuesta)
-    activarSonido();
-    //encenderCamara();    
-    cerrarCamara();    
+        if (code) {
+          console.log(code.data);
+          triggerEvent();  // Llama a triggerEvent cuando se detecte un código QR
+        }
+      }
 
-  }
-};
-//evento para mostrar la camara sin el boton 
-//window.addEventListener('load', (e) => {
-  //encenderCamara();
-//})
-
-
-
-
-
+      requestAnimationFrame(tick);
+    }
