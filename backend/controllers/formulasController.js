@@ -44,13 +44,13 @@ const formulasController = {
     try {
       const formula = await formulasService.createFormula(req.body.medicoId, req.body.pacienteId, req.body.items);
       // Devuelve el ID de la fórmula recién creada junto con la respuesta
-      res.json({ success: true, formulaId: formula.id });
+      res.json({ success: true, formulaId: formula[0].id  });
     } catch (error) {
       console.error("Error al crear formula en Supabase", error.message);
       res.status(500).json({ success: false, error: "Internal Server Error" });
     }
   },
-  
+
   getUltimaFormulaConQR: async (req, res) => {
     try {
       const { idPaciente } = req.params;

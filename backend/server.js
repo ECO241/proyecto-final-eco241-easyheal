@@ -38,7 +38,7 @@ app.get('/medicoss/:nombre', (req, res) => {
 
 // Ruta para servir el archivo HTML que muestra el código QR
 app.get('/formulas/:id', (req, res) => {
-  res.sendFile(path.join(staticPath, 'screens', 'qr.html'));
+  res.sendFile(path.join(staticPath, 'screens', 'medicoqr.html'));
 });
 
 

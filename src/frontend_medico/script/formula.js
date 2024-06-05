@@ -5,9 +5,17 @@ const displayFormulas = async () => {
   formulaList.innerHTML = '';
 
   try {
-    const response = await fetch('http://localhost:3000/formulas/paciente/dd5e7261-d717-43c9-af5f-eaff3d7fdb8a');
-    const result = await response.json();
+ // Obtener el pacienteId de la URL
+ const pacienteId = window.location.href.split('/').pop(); // Obtener el último segmento de la URL (pacienteId)
 
+ console.log(`Valor de pacienteId: ${pacienteId}`);
+
+ // Realizar la solicitud para obtener las fórmulas del paciente
+ const response = await fetch(`http://localhost:3000/formulas/paciente/${pacienteId}`);
+ const result = await response.json();
+
+
+ 
     if (result.success) {
       const formulas = result.data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
       const formulaMasReciente = formulas[0];

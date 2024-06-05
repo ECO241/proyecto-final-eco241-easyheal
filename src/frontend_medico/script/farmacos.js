@@ -93,7 +93,6 @@ const enviarPedido = async () => {
       carrito = [];
       actualizarCarrito();
 
-      const formulaId = json.formulaId; // Suponiendo que el servidor devuelve el ID de la fórmula recién creada
 
       // Redirigir a la página de QR con el ID de la fórmula
       window.location.href = `http://localhost:3000/formulas/${pacienteId}`;
