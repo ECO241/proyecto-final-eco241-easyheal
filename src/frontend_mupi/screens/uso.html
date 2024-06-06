@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="Logo">
+        <img id="logo" src="../img/Logo design_Mesa de trabajo 1 copia 6.png" alt="">
+    </div>
+
+    <div id="container" >
+
+        <div id="primero" >
+            <img id="uno" src="../img/Group 90.png" alt="">
+            <h3>Pon tu código QR en frente del escáner.</h3>
+        </div>
+
+        <div id="segundo" >
+            <img id="dos" src="../img/Group 91.png" alt="">
+            <h3>Selecciona la fórmula de tu interés.</h3>
+        </div>
+
+        <div id="tercero" >
+            <img id="tres" src="../img/Group 92.png" alt="">
+            <h3>Solicita tu orden de fármacos.</h3>
+        </div>
+    </div>
+    <div id="botones" >
+        <button>Continuar</button>
+    </div>
+
+    <style>
+        body {
+            background-color: #F5F4F4;
+            height: 50%; 
+            margin: 0; 
+        }
+
+        #container{
+            display: flex;
+            flex-direction: row;
+        }
+
+        #uno {
+            width: 230px;
+            height: 370px;
+        }
+
+        #primero{
+            margin-right: 30px;
+            text-align: center;
+        }
+
+        #dos {
+            width: 300px;
+            height: 370px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #segundo{
+            margin-left: 90px;
+            margin-right: 90px;
+            text-align: center;
+        }
+
+        #tres {
+            width: 320px;
+            height: 360px;
+        }
+
+        #tercero{
+            margin-left: 30px;
+            text-align: center;
+        }
+
+        h3{
+            font-style: normal;
+            font-family: satoshi;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 60px;
+            text-align: center;
+            color: #001b26;
+        }
+
+        #container{
+            align-items: center;
+            justify-content: center;
+        }
+
+        #logo{
+            width: 184px;
+            height: 197px;
+            margin-top: 0px;
+        }
+
+        .Logo{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button{
+            width: 280px;
+            height: 46px;
+            background: #001b26;
+            border: 1.5px solid #001b26;
+            border-radius: 10px;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 24px;
+            text-align: center;
+            color: #ffffff;
+            cursor: pointer;
+            margin-left: 50px;
+        }
+
+        #botones{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formula QR</title>
+</head>
+<body>
+
+  <div> <button id="back"><img src="../img/atras.png" alt=""></button>
+    <button id="notifications"><img src="../img/notifications.png" alt=""></button></div>
+
+   
+    <div id="formula-list" class="container"></div>
+    <script type="module" src="../Components/qr.js"></script>
+    <script type="module" src="../script/qr.js"></script>
+    <style>
+
+
+body {
+            background-color: #f4f4f5;
+            font-family: Satoshi, sans-serif;
+            margin: 0;
+            position: relative;
+        }
+
+        #notifications,
+        #back {
+            border: none; 
+            background-color: transparent;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #notifications {
+            float: right; /* Aligning to the right */
+        }
+
+        #notifications img{
+            width: 50px;
+        }
+
+        
+        .container {
+            font-family: Satoshi, sans-serif;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #f9f9f9; 
+            margin-top: 40px;
+            margin-left: 10px; /* Centering horizontally */
+            margin-right: auto; /* Centering horizontally */
+            clear: both; /* Clearing the float */
+            
+        }
+
+        img {
+            display: block;
+            max-width: 100px;
+            margin: 0 auto 16px; /* Centering horizontally */
+        }
+
+        .medicamentos {
+          margin-bottom: 16px;
+        }
+
+        .item {
+          display: flex;
+          justify-content: space-between;
+          padding: 8px 0;
+          border-bottom: 1px solid #ddd;
+        }
+
+        .item:last-child {
+          border-bottom: none;
+        }
+
+        .medicamentos{
+            border-style: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: Satoshi;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 30px;
+            text-align: left;
+            color: #001b26;
+            border: 1px solid #04bf8a;
+            border-radius: 21px;
+            width: 400px;
+            background-color: #f4f4f5;
+        }
+
+        
+        @media (max-width: 400px) {
+            #back,
+            #notifications {
+                width: 20%;
+                cursor: pointer;
+            }
+
+            #notifications img {
+                right: 5px; 
+                width: 60%;
+            }
+
+            #back img{
+                width: 60%;
+            }
+
+            .medicamentos {
+                width: 90%; /* Ajusta el ancho al 100% del contenedor padre */
+                padding: 10px; /* Mantén el padding existente o ajústalo según sea necesario */
+                line-height: 5px;
+               text-align: center;
+            }
+
+            h2{
+                font-size: 70%;
+                text-align: center;
+            }
+    }
+    </style>
+</body>
+</html>
