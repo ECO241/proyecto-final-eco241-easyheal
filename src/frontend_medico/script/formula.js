@@ -5,24 +5,26 @@ const displayFormulas = async () => {
   formulaList.innerHTML = '';
 
   try {
- // Obtener el pacienteId de la URL
- const pacienteId = window.location.href.split('/').pop(); // Obtener el último segmento de la URL (pacienteId)
+    // Obtener el pacienteId de la URL
+    const pacienteId = window.location.href.split('/').pop(); // Obtener el último segmento de la URL (pacienteId)
 
- console.log(`Valor de pacienteId: ${pacienteId}`);
+    console.log(`Valor de pacienteId: ${pacienteId}`);
 
- // Realizar la solicitud para obtener las fórmulas del paciente
- const response = await fetch(`http://localhost:3000/formulas/paciente/${pacienteId}`);
- const result = await response.json();
-
-
+    // Realizar la solicitud para obtener las fórmulas del paciente
+    const response = await fetch(`http://localhost:3000/formulas/paciente/${pacienteId}`);
+    const result = await response.json();
 
     if (result.success) {
       const formulas = result.data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
       const formulaMasReciente = formulas[0];
 
+      // Construir la URL dinámica para la visualización de la fórmula
+      const formulaUrl = `http://localhost:3000/verformulamupi?id=${formulaMasReciente.id}`;
+
       const formulaElement = document.createElement('mi-formula');
       formulaElement.setAttribute('qr_code', formulaMasReciente.qr_code);
       formulaElement.setAttribute('medicamentos', JSON.stringify(formulaMasReciente.medicamentos));
+      formulaElement.setAttribute('url', formulaUrl); // Agregar la URL generada como atributo
 
       const qrImg = document.createElement('img');
       qrImg.src = `data:image/png;base64,${formulaMasReciente.qr_code}`;
@@ -40,3 +42,4 @@ const displayFormulas = async () => {
 window.onload = () => {
   displayFormulas();
 };
+

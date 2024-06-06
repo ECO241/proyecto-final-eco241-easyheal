@@ -87,6 +87,13 @@ app.get('/entradamupi', (req, res) => {
   res.sendFile(path.join(staticPathss, 'screens', 'mupi.html'));
 });
 
+// Ruta dinámica Ver formula en Mupi
+app.get('/verformulamupi', (req, res) => {
+  res.sendFile(path.join(staticPathss, 'screens', 'verformula.html'));
+});
+
+
+
 
 
 
