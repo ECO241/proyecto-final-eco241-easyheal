@@ -27,10 +27,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.location.href = `http://localhost:3000/farmacoss?paciente=${encodeURIComponent(nombreParam)}&id=${encodeURIComponent(id)}&medico=${encodeURIComponent(medicoNombre)}&id=${encodeURIComponent(medicoId)}`;
   });
 
-  // Event listener para el botón de ver historial de fórmulas
   document.getElementById('ver-historial').addEventListener('click', () => {
-    window.location.href = `http://localhost:3000/formulas/historial?paciente=${encodeURIComponent(nombreParam)}&id=${encodeURIComponent(id)}`;
+    const medicoNombre = params[2].split('=')[1];
+    const medicoId = params[3].split('=')[1];
+    window.location.href = `http://localhost:3000/formulass/historial?paciente=${encodeURIComponent(nombreParam)}&id=${encodeURIComponent(id)}&medico=${encodeURIComponent(medicoNombre)}&id=${encodeURIComponent(medicoId)}`;
   });
+
+  document.getElementById('back').addEventListener('click', () => {
+    window.history.back();
+  });
+  document.getElementById('next').addEventListener('click', () => {
+    window.location.href = 'http://localhost:3000/entrada?medico=Luis_Tobar&id=f5a95abc-e4bc-4c1c-a590-e5d6e9b9c5f0';
+  });
+  
+  
 });
 
 

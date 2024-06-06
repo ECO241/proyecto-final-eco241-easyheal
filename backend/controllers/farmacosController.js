@@ -33,5 +33,7 @@ const farmacosController = {
   
 }
 
+
+
 export default farmacosController;
 

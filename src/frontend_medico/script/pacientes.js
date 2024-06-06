@@ -2,6 +2,14 @@ const displayPacientes = async () => {
   const pacientesList = document.getElementById('pacientes-list');
   pacientesList.innerHTML = '';
 
+  document.getElementById('back').addEventListener('click', () => {
+    window.history.back();
+  });
+  
+  document.getElementById('next').addEventListener('click', () => {
+    window.location.href = 'http://localhost:3000/entrada?medico=Luis_Tobar&id=f5a95abc-e4bc-4c1c-a590-e5d6e9b9c5f0';
+  });
+  
   try {
     const response = await fetch('http://localhost:3000/Pacientes');
     const result = await response.json();
@@ -31,6 +39,7 @@ const displayPacientes = async () => {
     console.error('Error al obtener los pacientes:', error);
   }
 };
+
 
 window.onload = () => {
   displayPacientes();

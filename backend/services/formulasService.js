@@ -1,6 +1,6 @@
 // database connection
 import { createClient } from "@supabase/supabase-js";
-
+import QRCode from 'qrcode';
 // Load environment variables from .env file
 
 const supabaseUrl = "https://ooasfhbydmbskkbenbff.supabase.co";
@@ -22,15 +22,54 @@ const formulasService = {
     return data;
   },
 
-  getFormulasById: async () => {
-    const { data, error } = await supabase
-        .from("formulas")
-        .select()
-        .eq('id', id);
-    if (error) {
+  getFormulasById: async (id) => {
+    try {
+        const { data, error } = await supabase
+            .from("formulas")
+            .select()
+            .eq('id', id).single();
+        if (error) {
+            throw new Error(error.message);
+        }
+        return data;
+    } catch (error) {
         throw new Error(error.message);
     }
-    return data;
+},
+
+  getFormulasByPacienteId: async (idPaciente) => {
+    try {
+      const { data, error } = await supabase
+        .from("formulas")
+        .select()
+        .eq('paciente_id', idPaciente);  
+      if (error) {
+        throw new Error(error.message);
+      }
+      return data;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  },
+  getUltimaFormulaByPacienteId: async (idPaciente) => {
+    try {
+      const { data, error } = await supabase
+        .from("formulas")
+        .select("*")
+        .eq('paciente_id', idPaciente)
+        .order('created_at', { ascending: true })
+        .limit(1);  
+      if (error) {
+        throw new Error(error.message);
+      }
+      return data;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  },
+  createQRLink: (formulaId, pacienteId) => {
+    const link = `http://tu-servidor.com/formula_mupiview.html?id_formula=${formulaId}&id_paciente=${pacienteId}`;
+    return link;
   },
 
   createFormula: async (idMedicos, idPaciente, medicamentos) => {
@@ -42,13 +81,56 @@ const formulasService = {
         doctor_id: idMedicos,
         medicamentos: medicamentos,        
         })
-        .select()
-        console.log(error)        
-        
-    } catch (error) {
-      throw new Error(error.message);
+        .select();
+
+        if (error) {
+          console.log(error);
+          throw new Error(error.message);
+        }
+  
+        // Get the inserted formula's ID
+        const formulaId = data[0].id;
+  
+        // Generate the QR code
+        const qrData = `Formula ID: ${formulaId}\nMedicamentos:\n${medicamentos.map(med => `Nombre: ${med.nombre}, Cantidad: ${med.cantidad}`).join('\n')}`;
+        const qrCodeDataUrl = await QRCode.toDataURL(qrData);
+
+  
+        // Convert the Data URL to a Base64 string
+        const base64Data = qrCodeDataUrl.split(",")[1];
+  
+        // Update the formula with the QR code
+        const { error: updateError } = await supabase
+          .from("formulas")
+          .update({ qr_code: base64Data })
+          .eq("id", formulaId);
+  
+        if (updateError) {
+          console.log(updateError);
+          throw new Error(updateError.message);
+        }
+        const qrLink = formulasService.createQRLink(formulaId, idPaciente);
+        return data;
+      } catch (error) {
+        throw new Error(error.message);
+      }
+      
+    }, 
+    fetchFormulaWithQRCode: async (id) => {
+      const { data, error } = await supabase
+        .from("formulas")
+        .select("qr_code")
+        .eq("id", id)
+        .single();
+  
+      if (error) {
+        throw new Error(error.message);
+      }
+  
+      return data.qr_code;
     }
-  },
-};
+  };
+  
+        
 
 export default formulasService;
