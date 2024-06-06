@@ -12,20 +12,20 @@ class Pacientes extends HTMLElement {
         <style>
           .paciente {
             width: 700px; 
-            height: 45px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 5px;
-            border-radius: 5px;
-            background-color: #f4f4f5;
-            border: 1px solid #04BF8A;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            margin-left: 100px; 
+          height: 45px;
+          border: 1px solid #ccc;
+          padding: 10px;
+          margin: 5px;
+          border-radius: 5px;
+          background-color: #f4f4f5;
+          border: 1px solid #04BF8A;
+          border-radius: 10px;
+          margin-bottom: 20px;
+          display: flex;
+          justify-content: space-between;
+          margin-left: 100px; 
 
-          }
+      }
           }
           .paciente h2 {
             margin: 0;

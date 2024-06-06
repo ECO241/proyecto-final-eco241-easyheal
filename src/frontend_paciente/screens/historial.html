@@ -7,17 +7,15 @@
 </head>
 <body>
 
-    <div id="historial">
+    <div id="paciente">
         <button id="back"><img src="../img/atras.png" alt=""></button>
         <button id="notifications"><img src="../img/notifications.png" alt=""></button>
         <h1>Historial de Fórmulas</h1>
     </div>
 
-    <div class="container.formulas">
-        <div>
-          <ul id="formulas-list"></ul>
-        </div>
-    </div>    
+    <div id="historial-list"></div>
+    <script type="module" src="../script/historialpaciente.js"></script> 
+    <script type="module" src="../Components/historial.js"></script>
 
     <style>
         body {
@@ -25,10 +23,12 @@
             font-family: Satoshi, sans-serif;
             margin: 0;
             position: relative;
+            
         }
 
-        #historial {
+        #paciente {
             position: relative;
+            margin-bottom: 40px;
         }
 
         #notifications,
@@ -62,6 +62,25 @@
             line-height: 43px;
             text-align: center;
             color: #001b26;
+           
+        }
+        .formula-item {
+            
+            border-style: none;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: Satoshi;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 45px;
+            text-align: left;
+            color: #001b26;
+            border: 1px solid #04bf8a;
+            border-radius: 10px;
+            width: 1400px;
+            margin-left: 50px;
+            margin-bottom: 10px;
         }
     
         @media (max-width: 400px) {
@@ -89,6 +108,19 @@
                 line-height: 43px;
                 text-align: center;
                 color: #001b26;
+                margin-bottom: 0px;
+            }
+
+            .formula-item {
+                width: 90%; /* Ajusta el ancho al 100% del contenedor padre */
+                margin-left: 0; /* Elimina el margen izquierdo */
+                padding: 10px; /* Mantén el padding existente o ajústalo según sea necesario */
+                margin-left: 10px;
+            }
+
+            #historial-list{
+                align-items: center;
+                justify-content: center;
             }
         }
     </style>
