@@ -84,8 +84,26 @@ app.get('/notificaciones', (req, res) => {
 
 // Ruta dinámica iniciomupi
 app.get('/entradamupi', (req, res) => {
+  res.sendFile(path.join(staticPathss, 'screens', 'entradamupi.html'));
+});
+
+// Ruta dinámica scaner
+app.get('/scaner', (req, res) => {
   res.sendFile(path.join(staticPathss, 'screens', 'mupi.html'));
 });
+
+// Ruta dinámica Ver formula en Mupi
+app.get('/verformulamupi', (req, res) => {
+  res.sendFile(path.join(staticPathss, 'screens', 'verformula.html'));
+});
+
+// Ruta dinámica Ver uso en Mupi
+app.get('/usomupi', (req, res) => {
+  res.sendFile(path.join(staticPathss, 'screens', 'uso.html'));
+});
+
+
+
 
 
 

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyHeald</title>
+</head>
+<body>
+
+    <div class="Todo">
+        <img id="logo" src="../img/Logo design_Mesa de trabajo 1 copia 6.png" alt="logo">
+        <p>La solución digital para una entrega eficiente de medicamentos con fórmula médica en entornos clínicos y hospitalarios.</p>
+        
+        <!-- Contenedor para alinear los botones -->
+        <div class="botones-container">
+            <button id="como-usar" class="boton">¿Cómo usar?</button>
+            <button id="iniciar" class="boton">Iniciar</button>
+        </div>
+
+    </div>
+    
+    <script type="module" src="../script/entrada.js"></script>
+    
+    <style>
+        body {
+            background-color: #F5F4F4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #back {
+            align-self: flex-start;
+            margin: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .Todo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #logo {
+            width: 35%;
+            max-width: 300px;
+            margin-top: 20px;
+        }
+
+        p {
+            font-family: satoshi;
+            font-weight: 500;
+            font-size: 1.5rem;
+            line-height: 130%;
+            text-align: center;
+            color: #001b26;
+            margin: 20px;
+        }
+
+        .botones-container {
+            display: flex;
+            flex-direction: row;
+            gap: 20px; /* Espacio entre los botones */
+            margin-top: 30px;
+        }
+
+        .boton {
+            width: 400px; /* Ancho aumentado */
+            max-width: 650px; /* Ancho máximo aumentado */
+            height: 48px;
+            border: 1px solid #001b26;
+            border-radius: 10px;
+            font-family: satoshi;
+            font-weight: 700;
+            font-size: 1.2rem;
+            line-height: 19px;
+            text-align: center;
+            color: #001b26;
+            cursor: pointer;
+        }
+
+        #como-usar{
+            background-color: #001b26;
+            color: #F5F4F4;
+        }
+
+        @media (max-width: 400px) {
+            #logo {
+                width: 55%;
+                max-width: 250px;
+                margin-top: 50px;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .boton {
+                width: 60%;
+                max-width: 180px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+        }
+
+    </style>
+</body>
+</html>
